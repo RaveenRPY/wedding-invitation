@@ -595,7 +595,7 @@
 
             .hero-names {
                 font-size: 3.5rem;
-                line-height: 1.1;
+                line-height: 1.2;
             }
 
             .hero-ampersand {
@@ -1003,8 +1003,9 @@
 
         /* Personalized Greeting */
         .personalized-greeting {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
             color: var(--primary-color);
             margin-bottom: 1rem;
             animation: fadeInUp 1s ease-out;
@@ -1736,13 +1737,138 @@
             }
 
             .personalized-greeting {
-                font-size: 2rem;
+                font-size: 1.2rem;
             }
 
             .floating-heart-parallax,
             .floating-rose-parallax {
                 display: none;
             }
+        }
+
+        /* Style for the emoji buttons */
+        .rsvp-emoji-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid;
+            background: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .rsvp-emoji-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            /* background: #fdfdfd; */
+        }
+
+        .rsvp-emoji-btn:active {
+            transform: scale(0.95);
+        }
+
+        .rsvp-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .guest-name-highlight {
+            display: block;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1px;
+        }
+
+        .rsvp-interaction-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin: 2rem 0;
+            border: 1px solid rgba(135, 169, 107, 0.2);
+        }
+
+        .rsvp-question {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .rsvp-options-wrapper {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .rsvp-option-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .rsvp-option-item span {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #888;
+        }
+
+        .rsvp-emoji-btn {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            border: 2px solid;
+            background: transparent;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .btn-yes {
+            border-color: #87A96B;
+            color: #87A96B;
+        }
+
+        .btn-no {
+            border-color: #d9534f;
+            color: #d9534f;
+        }
+
+        .rsvp-emoji-btn:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-yes:hover {
+            background-color: #87A96B;
+            color: white;
+        }
+
+        .btn-no:hover {
+            background-color: #d9534f;
+            color: white;
+        }
+
+        #submissionStatus {
+            margin-top: 0;
+            font-size: 0.95rem;
+            min-height: 0rem;
+            color: var(--primary-color);
+            font-weight: 500;
         }
     </style>
 </head>
@@ -1935,7 +2061,7 @@
                         <p>Join us for a refreshing welcome as we gather to celebrate</p>
                     </div>
                 </div>
-                
+
                 <div class="schedule-item">
                     <div class="schedule-time">7:30 PM</div>
                     <div class="schedule-details">
@@ -2064,8 +2190,8 @@
 
                 <!-- Dark Theme Map (same location with dark styling) -->
                 <iframe id="mapDark" class="map-iframe dark-map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.223823512016!2d79.8785284!3d7.1172977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2f17f837303fb%3A0x487bda0a22de457e!2sHotel%20Royal%20Ramesses!5e0!3m2!1sen!2slk!4v1733730000000"
-                width="100%" height="400"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.223823512016!2d79.8785284!3d7.1172977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2f17f837303fb%3A0x487bda0a22de457e!2sHotel%20Royal%20Ramesses!5e0!3m2!1sen!2slk!4v1733730000000"
+                    width="100%" height="400"
                     style="border:0; filter: invert(90%) hue-rotate(180deg) brightness(0.95) contrast(0.9);"
                     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
@@ -2077,7 +2203,8 @@
                     <p><strong>Hotel Royal Ramesses</strong></p>
                     <p>No.09, Ambalanmulla</p>
                     <p>Seeduwa, Sri Lanka</p>
-                    <a href="https://www.google.com/maps/place/Hotel+Royal+Ramesses/@7.1172977,79.8785284,17z/data=!4m21!1m11!3m10!1s0x3ae2f17f837303fb:0x487bda0a22de457e!2sHotel+Royal+Ramesses!5m2!4m1!1i2!8m2!3d7.1172924!4d79.8811033!10e1!16s%2Fg%2F11j0k0w9t3!3m8!1s0x3ae2f17f837303fb:0x487bda0a22de457e!5m2!4m1!1i2!8m2!3d7.1172924!4d79.8811033!16s%2Fg%2F11j0k0w9t3?hl=en&entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D" target="_blank" class="map-button">Open in
+                    <a href="https://www.google.com/maps/place/Hotel+Royal+Ramesses/@7.1172977,79.8785284,17z/data=!4m21!1m11!3m10!1s0x3ae2f17f837303fb:0x487bda0a22de457e!2sHotel+Royal+Ramesses!5m2!4m1!1i2!8m2!3d7.1172924!4d79.8811033!10e1!16s%2Fg%2F11j0k0w9t3!3m8!1s0x3ae2f17f837303fb:0x487bda0a22de457e!5m2!4m1!1i2!8m2!3d7.1172924!4d79.8811033!16s%2Fg%2F11j0k0w9t3?hl=en&entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D"
+                        target="_blank" class="map-button">Open in
                         Google Maps</a>
                 </div>
                 <div class="location-card">
@@ -2165,26 +2292,52 @@
         </div>
     </section>
 
-    <!-- RSVP Section -->
-    <section class="scroll-section" id="rsvp-section">
+    <section class="scroll-section" id="rsvp">
         <div class="section-content">
             <p class="section-subtitle">Join Us</p>
             <h2 class="section-title">Celebrate With Us</h2>
             <div class="ornament floating-heart">♥</div>
-            <p class="section-text">
-                "Love is not just something you feel, it is something you do."
-                <br><br>
-                Your presence would mean the world to us as we begin this new chapter.
-                <br>Please join us in celebrating our love and commitment to each other.
-            </p>
-            <button class="rsvp-button" onclick="handleRSVP()">RSVP Now</button>
 
-            <div class="special-message" style="margin-top: 2rem;">
-                <p>
-                    <strong>Please RSVP by January 15th, 2026</strong><br>
-                    Let us know about dietary restrictions or special requirements.
-                    We want to ensure everyone has a wonderful time!
+            <div class="rsvp-container">
+                <p class="section-text">
+                    "Love is not just something you feel, it is something you do."
+                    <br><br>
+                    <span id="guestGreeting" class="guest-name-highlight">Dear Guest</span>
+                    <br>
+                    Your presence would mean the world to us as we begin this new chapter.
+                    Please join us in celebrating our love and commitment to each other.
                 </p>
+
+                <div class="section-content">
+                    <p class="rsvp-question">Will you be attending?</p>
+
+                    <div class="rsvp-options-wrapper">
+                        <div class="rsvp-option-item">
+                            <button type="button" class="rsvp-emoji-btn btn-yes" onclick="submitRSVP('Attending')"
+                                aria-label="Yes">
+                                ✔
+                            </button>
+                            <span>YES</span>
+                        </div>
+
+                        <div class="rsvp-option-item">
+                            <button type="button" class="rsvp-emoji-btn btn-no" onclick="submitRSVP('Not Attending')"
+                                aria-label="No">
+                                ✖
+                            </button>
+                            <span>NO</span>
+                        </div>
+                    </div>
+
+                    <p id="submissionStatus"></p>
+                </div>
+
+                <div class="special-message">
+                    <p>
+                        <strong>Please RSVP by January 15th, 2026</strong><br>
+                        We can't wait to celebrate with you!
+                    </p>
+                </div>
             </div>
         </div>
     </section>
