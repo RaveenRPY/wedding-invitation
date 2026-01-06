@@ -340,6 +340,52 @@ function openMap() {
     window.open(mapsUrl, '_blank');
 }
 
+
+// This should be inside your existing <script> block
+(function() {
+    // 1. Set the guest name in the RSVP question
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('name') || "Guest";
+    const nameDisplay = document.getElementById('rsvpGuestName');
+    if (nameDisplay) nameDisplay.innerText = name;
+})();
+
+async function submitRSVP(status) {
+    const statusText = document.getElementById('submissionStatus');
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz4d1b1HM0Ro9PD8DLO5wkbYDw-ugOd9BdyEJAfbvlrBohskQiLVysBQmxeCsI6qwHF/exec';
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestName = urlParams.get('name') || "Guest";
+    
+    statusText.style.marginTop = "20px";
+    statusText.innerText = "Sending...";
+
+    try {
+        // We use the 'no-cors' mode to ignore the 302 redirect error
+        await fetch(scriptURL, {
+            method: 'POST',
+            mode: 'no-cors', 
+            cache: 'no-cache',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name: guestName, status: status })
+        });
+
+        // Since 'no-cors' doesn't let us read the response, 
+        // we assume success if the fetch command finishes.
+        statusText.innerHTML = `✨ Thank you, ${guestName}! <br> Your status: <strong>${status}</strong>`;
+        
+        // Optional: Disable buttons
+        document.querySelectorAll('.rsvp-emoji-btn').forEach(btn => btn.disabled = true);
+        document.querySelector('.rsvp-options-wrapper').style.opacity = "0.4";
+
+    } catch (error) {
+        console.error('Error:', error);
+        statusText.innerText = "Connection error. Please try again.";
+    }
+}
+
 // Make functions available globally
 window.handleRSVP = handleRSVP;
 window.openMap = openMap;
@@ -399,3 +445,4 @@ gsap.utils.toArray('.gallery-item').forEach((item, index) => {
         }
     });
 });
+
