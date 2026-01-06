@@ -830,150 +830,288 @@
             }
         }
 
-        /* Music Player */
+        /* Music Player - Modern Floating Design */
         .music-player {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
             z-index: 1000;
-            display: flex;
-            gap: 0.75rem;
-            align-items: center;
-            background: var(--card-bg);
-            padding: 0.75rem 1.25rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
             border-radius: 50px;
-            border: 2px solid var(--card-border);
-            box-shadow: 0 5px 20px var(--shadow-color);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            padding: 0.75rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15),
+                        0 0 0 1px rgba(255, 255, 255, 0.5),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            min-width: auto;
+            width: auto;
+            animation: floatIn 0.6s ease-out;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        /* Collapsed state (default) */
+        .music-player.collapsed {
+            padding: 0.75rem;
+            border-radius: 50px;
+            min-width: auto;
+            width: auto;
+            gap: 0;
+        }
+
+        .music-player.collapsed .music-info,
+        .music-player.collapsed .volume-control {
+            width: 0;
+            max-width: 0;
+            min-width: 0;
+            opacity: 0;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: scaleX(0);
+            flex: 0 0 0;
+        }
+
+        .music-player.collapsed .music-info {
+            gap: 0;
+            max-width: 0;
+        }
+
+        .music-player.collapsed .volume-control {
+            gap: 0;
+            max-width: 0;
+        }
+
+        .music-player.collapsed .music-text,
+        .music-player.collapsed .music-status,
+        .music-player.collapsed .volume-icon,
+        .music-player.collapsed .volume-slider {
+            width: 0;
+            max-width: 0;
+            margin: 0;
+            padding: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        /* Expanded state */
+        .music-player.expanded {
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            min-width: 280px;
+            gap: 1rem;
+        }
+
+        .music-player.expanded .music-info,
+        .music-player.expanded .volume-control {
+            width: auto;
+            max-width: 200px;
+            opacity: 1;
+            margin: 0;
+            padding: 0;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: scaleX(1);
+        }
+
+        .music-player.expanded .music-info {
+            max-width: 200px;
+        }
+
+        .music-player.expanded .volume-control {
+            max-width: 100px;
+        }
+
+        [data-theme="dark"] .music-player {
+            background: linear-gradient(135deg, rgba(20, 20, 25, 0.95) 0%, rgba(15, 15, 20, 0.9) 100%);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4),
+                        0 0 0 1px rgba(184, 212, 160, 0.2),
+                        inset 0 1px 0 rgba(184, 212, 160, 0.1);
+        }
+
+        @keyframes floatIn {
+            0% {
+                transform: translateY(100px) scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
         }
 
         .music-player:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px var(--shadow-hover);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(135, 169, 107, 0.25),
+                        0 0 0 1px rgba(135, 169, 107, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="dark"] .music-player:hover {
+            box-shadow: 0 15px 50px rgba(184, 212, 160, 0.2),
+                        0 0 0 1px rgba(184, 212, 160, 0.4),
+                        inset 0 1px 0 rgba(184, 212, 160, 0.2);
         }
 
         .music-toggle {
-            background: none;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #6B8E4F 100%);
             border: none;
-            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             -webkit-tap-highlight-color: transparent;
             position: relative;
+            box-shadow: 0 4px 15px rgba(135, 169, 107, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            flex-shrink: 0;
         }
 
         .music-toggle:hover {
-            transform: scale(1.2);
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 6px 20px rgba(135, 169, 107, 0.4),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.4);
         }
 
-        .music-toggle::after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            background: var(--primary-color);
-            opacity: 0;
-            z-index: -1;
+        .music-toggle:active {
+            transform: scale(0.95);
         }
 
-        .music-toggle.pulse::after {
-            animation: musicPulse 2s ease-out infinite;
+        .music-toggle.playing {
+            animation: musicBeat 1.5s ease-in-out infinite;
         }
 
-        @keyframes musicPulse {
-            0% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 0.6;
+        @keyframes musicBeat {
+            0%, 100% {
+                transform: scale(1);
             }
-
-            100% {
-                transform: translate(-50%, -50%) scale(2);
-                opacity: 0;
+            50% {
+                transform: scale(1.05);
             }
         }
 
-        /* Attention grabbing animation for music button */
-        @keyframes wiggle {
-
-            0%,
-            100% {
-                transform: rotate(0deg);
-            }
-
-            25% {
-                transform: rotate(-10deg) scale(1.1);
-            }
-
-            75% {
-                transform: rotate(10deg) scale(1.1);
-            }
+        .music-icon {
+            display: inline-block;
+            transition: transform 0.3s ease;
         }
 
-        .music-player.attention {
-            animation: wiggle 0.5s ease-in-out 3;
+        .music-toggle:hover .music-icon {
+            transform: scale(1.1);
+        }
+
+        .music-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            min-width: 0;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: left;
         }
 
         .music-text {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            font-weight: 600;
             color: var(--text-dark);
-            max-width: 0;
-            overflow: hidden;
             white-space: nowrap;
-            transition: max-width 0.3s ease, opacity 0.3s ease;
-            opacity: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            letter-spacing: 0.3px;
         }
 
-        .music-player:hover .music-text {
-            max-width: 200px;
-            opacity: 1;
+        [data-theme="dark"] .music-text {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .music-status {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            color: var(--primary-color);
+            opacity: 0.8;
+            font-weight: 500;
         }
 
         .volume-control {
-            display: none;
+            display: flex;
             align-items: center;
             gap: 0.5rem;
+            width: 100px;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: right;
         }
 
-        .music-player:hover .volume-control {
-            display: flex;
+        .volume-icon {
+            font-size: 0.9rem;
+            opacity: 0.7;
         }
 
         .volume-slider {
-            width: 60px;
-            height: 4px;
+            flex: 1;
+            height: 5px;
             -webkit-appearance: none;
             appearance: none;
-            background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-color) 70%, var(--shadow-soft) 70%, var(--shadow-soft) 100%);
-            border-radius: 5px;
+            background: rgba(135, 169, 107, 0.2);
+            border-radius: 10px;
             outline: none;
             cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        [data-theme="dark"] .volume-slider {
+            background: rgba(184, 212, 160, 0.2);
+        }
+
+        .volume-slider:hover {
+            background: rgba(135, 169, 107, 0.3);
+        }
+
+        [data-theme="dark"] .volume-slider:hover {
+            background: rgba(184, 212, 160, 0.3);
         }
 
         .volume-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: var(--primary-color);
             cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 8px rgba(135, 169, 107, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .volume-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 3px 12px rgba(135, 169, 107, 0.6);
         }
 
         .volume-slider::-moz-range-thumb {
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: var(--primary-color);
             cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 8px rgba(135, 169, 107, 0.4);
             border: none;
+            transition: all 0.3s ease;
+        }
+
+        .volume-slider::-moz-range-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 3px 12px rgba(135, 169, 107, 0.6);
         }
 
         /* Add to Calendar Button */
@@ -1729,11 +1867,43 @@
             .music-player {
                 bottom: 1rem;
                 right: 1rem;
-                padding: 0.6rem 1rem;
+                left: 1rem;
+                padding: 0.75rem 1rem;
+                min-width: auto;
+                width: auto;
+                border-radius: 50px;
+            }
+
+            .music-player.collapsed {
+                left: auto;
+                padding: 0.75rem;
+                border-radius: 50px;
+            }
+
+            .music-player.expanded {
+                border-radius: 50px;
             }
 
             .music-toggle {
-                font-size: 1.25rem;
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+
+            .music-text {
+                font-size: 0.75rem;
+            }
+
+            .music-status {
+                font-size: 0.65rem;
+            }
+
+            .volume-control {
+                width: 80px;
+            }
+
+            .volume-slider {
+                width: 60px;
             }
 
             .personalized-greeting {
@@ -1880,18 +2050,21 @@
         <span class="theme-icon sun">☀️</span>
     </button>
 
-    <!-- Music Player -->
-    <div class="music-player">
+    <!-- Music Player - Modern Floating Widget -->
+    <div class="music-player collapsed" id="musicPlayer">
         <button class="music-toggle" id="musicToggle" aria-label="Toggle music">
             <span class="music-icon playing">🎵</span>
             <span class="music-icon paused" style="display:none;">🔇</span>
         </button>
+        <div class="music-info">
         <span class="music-text" id="musicText">Romantic Piano</span>
-        <div class="volume-control">
-            <span style="font-size: 0.9rem;">🔉</span>
-            <input type="range" min="0" max="100" value="70" class="volume-slider" id="volumeSlider">
+            <span class="music-status" id="musicStatus">Ready to play</span>
         </div>
-        <audio id="bgMusic" loop preload="auto" crossorigin="anonymous">
+        <div class="volume-control">
+            <span class="volume-icon">🔉</span>
+            <input type="range" min="0" max="100" value="70" class="volume-slider" id="volumeSlider" aria-label="Volume control">
+        </div>
+        <audio id="bgMusic" loop preload="auto" crossorigin="anonymous" autoplay>
             <!-- Multiple romantic music sources for reliability -->
 
             <!-- Romantic Piano - Beautiful Wedding Instrumental -->
@@ -2061,7 +2234,7 @@
                         <p>Join us for a refreshing welcome as we gather to celebrate</p>
                     </div>
                 </div>
-
+                
                 <div class="schedule-item">
                     <div class="schedule-time">7:30 PM</div>
                     <div class="schedule-details">
@@ -2190,8 +2363,8 @@
 
                 <!-- Dark Theme Map (same location with dark styling) -->
                 <iframe id="mapDark" class="map-iframe dark-map"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.223823512016!2d79.8785284!3d7.1172977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2f17f837303fb%3A0x487bda0a22de457e!2sHotel%20Royal%20Ramesses!5e0!3m2!1sen!2slk!4v1733730000000"
-                    width="100%" height="400"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.223823512016!2d79.8785284!3d7.1172977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2f17f837303fb%3A0x487bda0a22de457e!2sHotel%20Royal%20Ramesses!5e0!3m2!1sen!2slk!4v1733730000000"
+                width="100%" height="400"
                     style="border:0; filter: invert(90%) hue-rotate(180deg) brightness(0.95) contrast(0.9);"
                     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
@@ -2231,35 +2404,26 @@
             <div
                 style="position: relative; max-width: 800px; margin: 2rem auto; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px var(--shadow-color);">
                 <div id="photoSlideshow" style="position: relative; height: 500px;">
-                    <!-- Sample Photos with gradients as placeholders -->
+                    <!-- Photo Slideshow using assets images -->
                     <div class="slide active"
-                        style="position: absolute; width: 100%; height: 100%; background: linear-gradient(135deg, #FF6B9D 0%, #FFA07A 100%); display: flex; align-items: center; justify-content: center; flex-direction: column; transition: opacity 0.5s ease;">
-                        <div style="font-size: 4rem; margin-bottom: 1rem;">💑</div>
-                        <p style="font-family: 'Great Vibes', cursive; font-size: 2rem; color: white;">Our First Date
-                        </p>
+                        style="position: absolute; width: 100%; height: 100%; opacity: 1; transition: opacity 0.5s ease;">
+                        <img src="assets/01.webp" alt="Gallery Image 1" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                     </div>
                     <div class="slide"
-                        style="position: absolute; width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; flex-direction: column; opacity: 0; transition: opacity 0.5s ease;">
-                        <div style="font-size: 4rem; margin-bottom: 1rem;">🌹</div>
-                        <p style="font-family: 'Great Vibes', cursive; font-size: 2rem; color: white;">The Proposal</p>
+                        style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease;">
+                        <img src="assets/02.webp" alt="Gallery Image 2" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                     </div>
                     <div class="slide"
-                        style="position: absolute; width: 100%; height: 100%; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; flex-direction: column; opacity: 0; transition: opacity 0.5s ease;">
-                        <div style="font-size: 4rem; margin-bottom: 1rem;">💕</div>
-                        <p style="font-family: 'Great Vibes', cursive; font-size: 2rem; color: white;">Engagement Day
-                        </p>
+                        style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease;">
+                        <img src="assets/03.webp" alt="Gallery Image 3" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                     </div>
                     <div class="slide"
-                        style="position: absolute; width: 100%; height: 100%; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center; flex-direction: column; opacity: 0; transition: opacity 0.5s ease;">
-                        <div style="font-size: 4rem; margin-bottom: 1rem;">✨</div>
-                        <p style="font-family: 'Great Vibes', cursive; font-size: 2rem; color: white;">Making Memories
-                        </p>
+                        style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease;">
+                        <img src="assets/04.webp" alt="Gallery Image 4" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                     </div>
                     <div class="slide"
-                        style="position: absolute; width: 100%; height: 100%; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); display: flex; align-items: center; justify-content: center; flex-direction: column; opacity: 0; transition: opacity 0.5s ease;">
-                        <div style="font-size: 4rem; margin-bottom: 1rem;">💖</div>
-                        <p style="font-family: 'Great Vibes', cursive; font-size: 2rem; color: white;">Forever Begins
-                        </p>
+                        style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease;">
+                        <img src="assets/05.webp" alt="Gallery Image 5" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                     </div>
                 </div>
 
@@ -2299,12 +2463,12 @@
             <div class="ornament floating-heart">♥</div>
 
             <div class="rsvp-container">
-                <p class="section-text">
-                    "Love is not just something you feel, it is something you do."
-                    <br><br>
+            <p class="section-text">
+                "Love is not just something you feel, it is something you do."
+                <br><br>
                     <span id="guestGreeting" class="guest-name-highlight">Dear Guest</span>
                     <br>
-                    Your presence would mean the world to us as we begin this new chapter.
+                Your presence would mean the world to us as we begin this new chapter.
                     Please join us in celebrating our love and commitment to each other.
                 </p>
 
@@ -2333,10 +2497,10 @@
                 </div>
 
                 <div class="special-message">
-                    <p>
-                        <strong>Please RSVP by January 15th, 2026</strong><br>
+                <p>
+                    <strong>Please RSVP by January 15th, 2026</strong><br>
                         We can't wait to celebrate with you!
-                    </p>
+                </p>
                 </div>
             </div>
         </div>
@@ -2449,121 +2613,266 @@
             }
         })();
 
-        // 2. BACKGROUND MUSIC PLAYER (Enhanced with Auto-play & Volume Control)
+        // 2. BACKGROUND MUSIC PLAYER (Enhanced with Auto-play, Expand/Collapse & Modern Design)
         (function () {
+            const musicPlayer = document.getElementById('musicPlayer');
             const musicToggle = document.getElementById('musicToggle');
             const bgMusic = document.getElementById('bgMusic');
             const playingIcon = musicToggle.querySelector('.playing');
             const pausedIcon = musicToggle.querySelector('.paused');
             const volumeSlider = document.getElementById('volumeSlider');
             const musicText = document.getElementById('musicText');
+            const musicStatus = document.getElementById('musicStatus');
             let isPlaying = false;
+            let collapseTimer = null;
+            let isExpanded = false; // Start collapsed
 
-            // Set initial volume
+            // Set initial volume and ensure audio is ready
             bgMusic.volume = 0.7;
+            bgMusic.muted = false; // Ensure not muted
+            
+            // Try to load and play immediately
+            bgMusic.load(); // Force reload to ensure it's ready
 
-            // Add loading event listener
+            // Update volume slider background
+            function updateVolumeSlider() {
+                const percentage = volumeSlider.value;
+                volumeSlider.style.background = `linear-gradient(90deg, var(--primary-color) 0%, var(--primary-color) ${percentage}%, rgba(135, 169, 107, 0.2) ${percentage}%, rgba(135, 169, 107, 0.2) 100%)`;
+            }
+            updateVolumeSlider();
+            
+            // Function to update UI when playing
+            function updatePlayingUI() {
+                playingIcon.style.display = 'inline';
+                pausedIcon.style.display = 'none';
+                musicText.textContent = 'Romantic Piano';
+                musicStatus.textContent = 'Now Playing ♫';
+                musicToggle.classList.add('playing');
+                isPlaying = true;
+            }
+
+            // Function to update UI when paused
+            function updatePausedUI() {
+                playingIcon.style.display = 'none';
+                pausedIcon.style.display = 'inline';
+                musicText.textContent = 'Romantic Piano';
+                musicStatus.textContent = 'Paused';
+                musicToggle.classList.remove('playing');
+                isPlaying = false;
+            }
+
+            // Auto-play on page load
+            function attemptAutoPlay() {
+                // Ensure volume and muted state are set
+                bgMusic.volume = 0.7;
+                bgMusic.muted = false;
+                
+                const playPromise = bgMusic.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        updatePlayingUI();
+                        console.log('▶️ Music auto-playing! 🎵');
+                        // Widget stays collapsed when auto-playing
+                    }).catch(error => {
+                        console.log('⚠️ Autoplay prevented by browser:', error);
+                        // Don't update UI to paused, keep trying
+                        musicStatus.textContent = 'Click to play';
+                    });
+                } else {
+                    // Fallback for older browsers
+                    try {
+                        bgMusic.play();
+                        updatePlayingUI();
+                        console.log('▶️ Music playing (fallback)! 🎵');
+                    } catch (e) {
+                        console.log('⚠️ Play failed:', e);
+                    }
+                }
+            }
+            
+            // Immediate attempt to play (before any events)
+            setTimeout(() => {
+                if (bgMusic.readyState >= 2) { // HAVE_CURRENT_DATA or higher
+                    attemptAutoPlay();
+                }
+            }, 0);
+
+            // Expand/collapse functions
+            function expandPlayer() {
+                if (!isExpanded) {
+                    musicPlayer.classList.remove('collapsed');
+                    musicPlayer.classList.add('expanded');
+                    isExpanded = true;
+                    resetCollapseTimer();
+                }
+            }
+
+            function collapsePlayer() {
+                if (isExpanded) {
+                    musicPlayer.classList.remove('expanded');
+                    musicPlayer.classList.add('collapsed');
+                    isExpanded = false;
+                    clearCollapseTimer();
+                }
+            }
+
+            function resetCollapseTimer() {
+                clearCollapseTimer();
+                // Auto-collapse after 2 seconds of inactivity
+                collapseTimer = setTimeout(() => {
+                    collapsePlayer();
+                }, 2000);
+            }
+
+            function clearCollapseTimer() {
+                if (collapseTimer) {
+                    clearTimeout(collapseTimer);
+                    collapseTimer = null;
+                }
+            }
+
+            // Expand on hover or click
+            musicPlayer.addEventListener('mouseenter', expandPlayer);
+            musicPlayer.addEventListener('click', function(e) {
+                // Don't expand if clicking the toggle button
+                if (e.target !== musicToggle && !musicToggle.contains(e.target)) {
+                    expandPlayer();
+                }
+            });
+
+            // Auto-collapse when mouse leaves (only if expanded)
+            musicPlayer.addEventListener('mouseleave', function() {
+                if (isExpanded) {
+                    resetCollapseTimer();
+                }
+            });
+
+            // Prevent collapse when interacting with volume slider
+            volumeSlider.addEventListener('mousedown', clearCollapseTimer);
+            volumeSlider.addEventListener('mouseup', resetCollapseTimer);
+            volumeSlider.addEventListener('input', resetCollapseTimer);
+
+            // Add loading event listeners - try multiple events for best compatibility
+            bgMusic.addEventListener('canplay', function () {
+                console.log('🎵 Audio can play');
+                if (!isPlaying) {
+                    attemptAutoPlay();
+                }
+            }, { once: true });
+
+            bgMusic.addEventListener('canplaythrough', function () {
+                console.log('🎵 Audio can play through');
+                if (!isPlaying) {
+                    attemptAutoPlay();
+                }
+            }, { once: true });
+
             bgMusic.addEventListener('loadeddata', function () {
                 console.log('✅ Music loaded successfully!');
-                musicText.textContent = '🎵 Click to Play';
-
-                // Add pulse effect when loaded
-                musicToggle.classList.add('pulse');
-            });
+                musicText.textContent = 'Romantic Piano';
+                musicStatus.textContent = 'Ready to play';
+                
+                // Auto-play immediately when loaded
+                if (!isPlaying) {
+                    attemptAutoPlay();
+                }
+            }, { once: true });
 
             bgMusic.addEventListener('error', function (e) {
                 console.error('❌ Music loading error:', e);
                 musicText.textContent = 'Music unavailable';
+                musicStatus.textContent = 'Error loading';
             });
 
-            // Add attention-grabbing wiggle after 3 seconds
+            // Try auto-play immediately when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 if (!isPlaying) {
-                    const musicPlayer = document.querySelector('.music-player');
-                    musicPlayer.classList.add('attention');
+                            attemptAutoPlay();
+                        }
+                    }, 50);
+                });
+            } else {
+                // DOM already loaded
+                setTimeout(() => {
+                    if (!isPlaying) {
+                        attemptAutoPlay();
+                    }
+                }, 50);
+            }
 
-                    // Remove class after animation
+            // Try auto-play when page is fully loaded
+            window.addEventListener('load', function() {
                     setTimeout(() => {
-                        musicPlayer.classList.remove('attention');
-                    }, 1500);
+                    if (!isPlaying) {
+                        attemptAutoPlay();
+                    }
+                }, 100);
+            });
+
+            // Additional attempts at various intervals
+            setTimeout(() => {
+                if (!isPlaying) {
+                    attemptAutoPlay();
                 }
-            }, 3000);
+            }, 200);
+            
+            setTimeout(() => {
+                if (!isPlaying) {
+                    attemptAutoPlay();
+                }
+            }, 500);
+            
+            setTimeout(() => {
+                if (!isPlaying) {
+                    attemptAutoPlay();
+                }
+            }, 1000);
+
+            // Also try on any user interaction (fallback)
+            let hasTriedAutoPlay = false;
+            function tryAutoPlayOnInteraction() {
+                if (!hasTriedAutoPlay && !isPlaying) {
+                    hasTriedAutoPlay = true;
+                    attemptAutoPlay();
+                }
+            }
+
+            document.addEventListener('click', tryAutoPlayOnInteraction, { once: true });
+            document.addEventListener('touchstart', tryAutoPlayOnInteraction, { once: true });
+            document.addEventListener('scroll', tryAutoPlayOnInteraction, { once: true });
 
             // Toggle play/pause
             musicToggle.addEventListener('click', function (e) {
+                e.stopPropagation(); // Prevent expanding when clicking toggle
                 e.preventDefault();
 
                 if (isPlaying) {
                     bgMusic.pause();
-                    playingIcon.style.display = 'none';
-                    pausedIcon.style.display = 'inline';
-                    musicText.textContent = 'Click to Play';
-                    musicToggle.classList.add('pulse');
+                    updatePausedUI();
                     console.log('⏸️ Music paused');
                 } else {
                     const playPromise = bgMusic.play();
 
                     if (playPromise !== undefined) {
                         playPromise.then(() => {
-                            playingIcon.style.display = 'inline';
-                            pausedIcon.style.display = 'none';
-                            musicText.textContent = 'Now Playing ♫';
-                            musicToggle.classList.remove('pulse');
-                            isPlaying = true;
+                            updatePlayingUI();
                             console.log('▶️ Music playing! 🎵');
                         }).catch(error => {
-                            console.log('⚠️ Autoplay prevented:', error);
-                            // Show friendly notification
-                            const notification = document.createElement('div');
-                            notification.style.cssText = 'position: fixed; bottom: 100px; right: 20px; background: var(--primary-color); color: white; padding: 15px 25px; border-radius: 10px; font-family: Montserrat; font-size: 14px; z-index: 10000; box-shadow: 0 5px 20px rgba(0,0,0,0.3);';
-                            notification.textContent = '🎵 Click the music icon to start!';
-                            document.body.appendChild(notification);
-
-                            setTimeout(() => {
-                                notification.style.transition = 'opacity 0.3s';
-                                notification.style.opacity = '0';
-                                setTimeout(() => notification.remove(), 300);
-                            }, 3000);
+                            console.log('⚠️ Play prevented:', error);
+                            musicStatus.textContent = 'Click to play';
                         });
                     }
                 }
-                isPlaying = !isPlaying;
             });
 
             // Volume control
             volumeSlider.addEventListener('input', function () {
                 bgMusic.volume = this.value / 100;
-
-                // Update slider background gradient
-                const percentage = this.value;
-                this.style.background = `linear-gradient(90deg, var(--primary-color) 0%, var(--primary-color) ${percentage}%, var(--shadow-soft) ${percentage}%, var(--shadow-soft) 100%)`;
+                updateVolumeSlider();
             });
-
-            // Auto-play on first user interaction
-            let hasAutoPlayed = false;
-            function tryAutoPlay() {
-                if (!hasAutoPlayed && !isPlaying) {
-                    hasAutoPlayed = true;
-                    console.log('🎵 Attempting auto-play...');
-
-                    // Small delay to ensure user gesture is registered
-                    setTimeout(() => {
-                        musicToggle.click();
-                    }, 500);
-                }
-            }
-
-            // Try to auto-play after first interaction
-            document.addEventListener('click', tryAutoPlay, { once: true });
-            document.addEventListener('touchstart', tryAutoPlay, { once: true });
-            document.addEventListener('scroll', tryAutoPlay, { once: true });
-
-            // Show notification that music is available
-            setTimeout(() => {
-                if (!isPlaying) {
-                    console.log('💡 Tip: Click the 🎵 button in the bottom-right to play romantic music!');
-                }
-            }, 3000);
         })();
 
         // 3. PARALLAX SCROLLING
@@ -2782,4 +3091,5 @@ END:VCALENDAR`;
     <script src="main.js"></script>
 </body>
 
+</html>
 </html>
