@@ -6,12 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nikini & Raveen - Wedding Invitation</title>
 
+    <!-- Favicon - Green Heart -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2387A96B'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2387A96B'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&family=Poppins:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&family=Poppins:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet">
 
     <style>
         * {
@@ -2044,897 +2048,972 @@
 </head>
 
 <body>
-    <!-- Dark Mode Toggle Button -->
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-        <span class="theme-icon moon">🌙</span>
-        <span class="theme-icon sun">☀️</span>
+<!-- Dark Mode Toggle Button -->
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <span class="theme-icon moon">🌙</span>
+    <span class="theme-icon sun">☀️</span>
+</button>
+
+<!-- Music Player - Modern Floating Widget -->
+<div class="music-player collapsed" id="musicPlayer">
+    <button class="music-toggle" id="musicToggle" aria-label="Toggle music">
+        <span class="music-icon playing">🎵</span>
+        <span class="music-icon paused" style="display:none;">🔇</span>
     </button>
-
-    <!-- Music Player - Modern Floating Widget -->
-    <div class="music-player collapsed" id="musicPlayer">
-        <button class="music-toggle" id="musicToggle" aria-label="Toggle music">
-            <span class="music-icon playing">🎵</span>
-            <span class="music-icon paused" style="display:none;">🔇</span>
-        </button>
-        <div class="music-info">
+    <div class="music-info">
         <span class="music-text" id="musicText">Romantic Piano</span>
-            <span class="music-status" id="musicStatus">Ready to play</span>
-        </div>
-        <div class="volume-control">
-            <span class="volume-icon">🔉</span>
-            <input type="range" min="0" max="100" value="70" class="volume-slider" id="volumeSlider" aria-label="Volume control">
-        </div>
-        <audio id="bgMusic" loop preload="auto" crossorigin="anonymous" autoplay>
-            <!-- Multiple romantic music sources for reliability -->
-
-            <!-- Romantic Piano - Beautiful Wedding Instrumental -->
-            <source src="https://cdn.pixabay.com/audio/2022/03/24/audio_4a5b1a9478.mp3" type="audio/mpeg">
-
-            <!-- Backup Source 1: Peaceful Piano -->
-            <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
-
-            <!-- Backup Source 2: Romantic Love Piano -->
-            <source src="https://cdn.pixabay.com/audio/2023/02/28/audio_a53c49220e.mp3" type="audio/mpeg">
-
-            <!-- Backup Source 3: Beautiful Dream -->
-            <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_91b0e7d6b6.mp3" type="audio/mpeg">
-
-            <!-- 
-            ═══════════════════════════════════════════════════════════════
-            TO USE YOUR OWN MUSIC:
-            ═══════════════════════════════════════════════════════════════
-            1. Create a "music" folder next to index.html
-            2. Add your MP3 file (e.g., "wedding-song.mp3")
-            3. Uncomment and update the line below:
-            -->
-            <!-- <source src="music/wedding-song.mp3" type="audio/mpeg"> -->
-
-            Your browser does not support the audio element.
-        </audio>
+        <span class="music-status" id="musicStatus">Ready to play</span>
     </div>
+    <div class="volume-control">
+        <span class="volume-icon">🔉</span>
+        <input type="range" min="0" max="100" value="70" class="volume-slider" id="volumeSlider" aria-label="Volume control">
+    </div>
+    <audio id="bgMusic" loop preload="auto" crossorigin="anonymous" autoplay>
+        <!-- Multiple romantic music sources for reliability -->
 
-    <!-- Parallax Floating Elements -->
-    <div class="parallax-element floating-heart-parallax" style="top: 10%; left: 10%;">💕</div>
-    <div class="parallax-element floating-rose-parallax" style="top: 20%; right: 15%;">🌹</div>
-    <div class="parallax-element floating-heart-parallax" style="top: 40%; left: 5%;">💖</div>
-    <div class="parallax-element floating-rose-parallax" style="top: 60%; right: 10%;">🌹</div>
-    <div class="parallax-element floating-heart-parallax" style="top: 80%; left: 15%;">💝</div>
-    <div class="parallax-element floating-rose-parallax" style="bottom: 10%; right: 20%;">🌹</div>
+        <!-- Romantic Piano - Beautiful Wedding Instrumental -->
+        <source src="https://cdn.pixabay.com/audio/2022/03/24/audio_4a5b1a9478.mp3" type="audio/mpeg">
 
-    <!-- 3D Canvas Background -->
-    <div class="webgl-container" id="scene-container"></div>
+        <!-- Backup Source 1: Peaceful Piano -->
+        <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
 
-    <!-- Easter Egg: Secret Message Modal -->
-    <div class="secret-message" id="secretMessage">
-        <button class="secret-message-close" id="closeSecret">✕</button>
-        <h2
+        <!-- Backup Source 2: Romantic Love Piano -->
+        <source src="https://cdn.pixabay.com/audio/2023/02/28/audio_a53c49220e.mp3" type="audio/mpeg">
+
+        <!-- Backup Source 3: Beautiful Dream -->
+        <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_91b0e7d6b6.mp3" type="audio/mpeg">
+
+        <!--
+        ═══════════════════════════════════════════════════════════════
+        TO USE YOUR OWN MUSIC:
+        ═══════════════════════════════════════════════════════════════
+        1. Create a "music" folder next to index.html
+        2. Add your MP3 file (e.g., "wedding-song.mp3")
+        3. Uncomment and update the line below:
+        -->
+        <!-- <source src="music/wedding-song.mp3" type="audio/mpeg"> -->
+
+        Your browser does not support the audio element.
+    </audio>
+</div>
+
+<!-- Parallax Floating Elements -->
+<div class="parallax-element floating-heart-parallax" style="top: 10%; left: 10%;">💕</div>
+<div class="parallax-element floating-rose-parallax" style="top: 20%; right: 15%;">🌹</div>
+<div class="parallax-element floating-heart-parallax" style="top: 40%; left: 5%;">💖</div>
+<div class="parallax-element floating-rose-parallax" style="top: 60%; right: 10%;">🌹</div>
+<div class="parallax-element floating-heart-parallax" style="top: 80%; left: 15%;">💝</div>
+<div class="parallax-element floating-rose-parallax" style="bottom: 10%; right: 20%;">🌹</div>
+
+<!-- 3D Canvas Background -->
+<div class="webgl-container" id="scene-container"></div>
+
+<!-- Easter Egg: Secret Message Modal -->
+<div class="secret-message" id="secretMessage">
+    <button class="secret-message-close" id="closeSecret">✕</button>
+    <h2
             style="font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;">
-            You Found It! 💕</h2>
-        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; line-height: 1.8;">
-            "The best thing to hold onto in life is each other."<br>
-            <em>- Audrey Hepburn</em>
-        </p>
-        <p
+        You Found It! 💕</h2>
+    <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; line-height: 1.8;">
+        "The best thing to hold onto in life is each other."<br>
+        <em>- Audrey Hepburn</em>
+    </p>
+    <p
             style="margin-top: 1.5rem; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; color: var(--secondary-color);">
-            Thank you for being part of our special day! ✨
+        Thank you for being part of our special day! ✨
+    </p>
+</div>
+
+<!-- Hero Section -->
+<section id="hero">
+    <div class="hero-content">
+        <div class="personalized-greeting" id="guestGreeting"></div>
+        <p class="hero-subtitle">Together with their families</p>
+        <h1 class="hero-names">
+            Nikini <span class="hero-ampersand">&</span> Raveen
+        </h1>
+        <div class="hero-divider"></div>
+        <p class="hero-subtitle">Request the honor of your presence</p>
+        <p class="hero-subtitle" style="margin-top: 1rem;">at their wedding celebration</p>
+    </div>
+</section>
+
+<!-- Date & Time Section -->
+<section class="scroll-section" id="datetime-section">
+    <div class="section-content">
+        <!-- Main Date Banner -->
+        <div class="date-banner">
+            <div class="date-banner-top">
+                <span class="banner-ornament">✦</span>
+                <p class="section-subtitle" style="margin: 0;">Save The Date</p>
+                <span class="banner-ornament">✦</span>
+            </div>
+            <div class="date-banner-main">
+                <div class="date-circle">
+                    <div class="date-day">31</div>
+                    <div class="date-month">January</div>
+                </div>
+                <div class="date-details-center">
+                    <h2 class="date-year">2026</h2>
+                    <div class="date-ornament-divider">
+                        <span>❦</span>
+                    </div>
+                    <p class="date-day-name">Saturday</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event Details Cards -->
+        <div class="event-details-modern">
+            <div class="detail-card-modern time-card">
+                <div class="detail-icon-wrapper">
+                    <div class="detail-icon">🕐</div>
+                </div>
+                <div class="detail-content">
+                    <h3 class="detail-title">Time</h3>
+                    <p class="detail-value">6:00 PM Onwards</p>
+                </div>
+            </div>
+            <div class="detail-card-modern venue-card">
+                <div class="detail-icon-wrapper">
+                    <div class="detail-icon">📍</div>
+                </div>
+                <div class="detail-content">
+                    <h3 class="detail-title">Venue</h3>
+                    <p class="detail-value">Hotel Royal Ramesses</p>
+                    <p class="detail-value" style="font-size: 0.7rem;">(Skylar Princess Banquet, 2nd Floor)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Countdown Timer -->
+        <div style="margin-top: 3rem;">
+            <p class="section-subtitle">Counting Down</p>
+            <div class="countdown-container" id="countdown">
+                <div class="countdown-box">
+                    <div class="countdown-number" id="days">--</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="hours">--</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="minutes">--</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="seconds">--</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add to Calendar Button -->
+        <button class="calendar-button" id="addToCalendar">
+            📅 Add to Calendar
+        </button>
+    </div>
+</section>
+
+<!-- Wedding Schedule Section -->
+<section class="scroll-section" id="schedule-section">
+    <div class="section-content">
+        <p class="section-subtitle">Wedding Day</p>
+        <h2 class="section-title">Schedule</h2>
+        <div class="ornament sparkle">✦</div>
+
+        <div class="schedule-grid">
+            <div class="schedule-item">
+                <div class="schedule-time">6:00 PM</div>
+                <div class="schedule-details">
+                    <h3>💒 Church Ceremony Begins</h3>
+                    <p>Witness our vows and the beginning of our forever</p>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">7:00 PM</div>
+                <div class="schedule-details">
+                    <h3>💐 Guest Arrival & Welcome Drinks</h3>
+                    <p>Join us for a refreshing welcome as we gather to celebrate</p>
+                </div>
+            </div>
+
+            <div class="schedule-item">
+                <div class="schedule-time">7:30 PM</div>
+                <div class="schedule-details">
+                    <h3>📸 Photo Session</h3>
+                    <p>Capture beautiful moments with the newlyweds</p>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">8:00 PM</div>
+                <div class="schedule-details">
+                    <h3>🍽️ Reception & Dinner</h3>
+                    <p>Enjoy a delightful feast and heartfelt toasts</p>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">9:00 PM</div>
+                <div class="schedule-details">
+                    <h3>💃 Dance & Celebration</h3>
+                    <p>Let's dance the night away under the stars</p>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">12:00 PM</div>
+                <div class="schedule-details">
+                    <h3>🌙 End of the Ceremony</h3>
+                    <p>The wedding is over, but the party continues!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Story Section -->
+<section class="scroll-section" id="story-section">
+    <div class="section-content">
+        <p class="section-subtitle">Our Journey</p>
+        <h2 class="section-title">Love Story</h2>
+        <div class="ornament">✿</div>
+
+        <div class="story-timeline">
+            <div class="story-item">
+                <div class="story-year">The Beginning</div>
+                <div class="story-description">
+                    When two hearts meet, destiny unfolds. What started as a simple hello became a lifetime promise.
+                </div>
+            </div>
+            <div class="story-item">
+                <div class="story-year">Our Journey</div>
+                <div class="story-description">
+                    Through every laugh, every dream, and every moment shared, we discovered that love is not about
+                    finding the perfect person, but seeing an imperfect person perfectly.
+                </div>
+            </div>
+            <div class="story-item">
+                <div class="story-year">The Promise</div>
+                <div class="story-description">
+                    With hearts full of hope and souls intertwined, we chose each other—today, tomorrow, and for all
+                    our tomorrows.
+                </div>
+            </div>
+            <div class="story-item">
+                <div class="story-year">Forever Begins</div>
+                <div class="story-description">
+                    Join us as we celebrate our love and begin the most beautiful chapter of our lives together.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Dress Code Section -->
+<section class="scroll-section" id="dresscode-section">
+    <div class="section-content">
+        <p class="section-subtitle">What To Wear</p>
+        <h2 class="section-title">Dress Code</h2>
+        <div class="ornament">👗</div>
+
+        <div class="dress-code-cards">
+            <div class="dress-card">
+                <div class="dress-icon">🤵</div>
+                <div class="dress-title">Gentlemen</div>
+                <div class="dress-description">Formal suits in black or dark colors. Sage green accessories welcome!
+                </div>
+            </div>
+            <div class="dress-card">
+                <div class="dress-icon">👰</div>
+                <div class="dress-title">Ladies</div>
+                <div class="dress-description">Elegant evening gowns. Feel free to embrace our sage green theme!
+                </div>
+            </div>
+            <div class="dress-card">
+                <div class="dress-icon">🎨</div>
+                <div class="dress-title">Color Theme</div>
+                <div class="dress-description">Sage Green, White & Black - but wear what makes you feel beautiful!
+                </div>
+            </div>
+        </div>
+
+        <div class="special-message">
+            <p>
+                We want you to feel comfortable and confident. While we love our sage green, white, and black theme,
+                what matters most is that you're there to celebrate with us. Dress to impress, but most
+                importantly, dress to enjoy the evening!
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Location & Directions Section -->
+<section class="scroll-section" id="location-section">
+    <div class="section-content">
+        <p class="section-subtitle">How To Get There</p>
+        <h2 class="section-title">Location & Directions</h2>
+        <div class="ornament">🗺️</div>
+
+        <!-- Interactive Map with Dark Mode Support -->
+        <div
+                style="margin: 2rem 0; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px var(--shadow-color); height: 400px; position: relative;">
+            <!-- Light Theme Map -->
+            <iframe id="mapLight" class="map-iframe light-map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.223823512016!2d79.8785284!3d7.1172977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2f17f837303fb%3A0x487bda0a22de457e!2sHotel%20Royal%20Ramesses!5e0!3m2!1sen!2slk!4v1733730000000"
+                    width="100%" height="400" style="border:0;" allowfullscreen loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+
+
+            <!-- Dark Theme Map (same location with dark styling) -->
+            <iframe id="mapDark" class="map-iframe dark-map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.223823512016!2d79.8785284!3d7.1172977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2f17f837303fb%3A0x487bda0a22de457e!2sHotel%20Royal%20Ramesses!5e0!3m2!1sen!2slk!4v1733730000000"
+                    width="100%" height="400"
+                    style="border:0; filter: invert(90%) hue-rotate(180deg) brightness(0.95) contrast(0.9);"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <div class="location-info">
+            <div class="location-card">
+                <h3>📍 Venue Address</h3>
+                <p><strong>Hotel Royal Ramesses</strong></p>
+                <p>No.09, Ambalanmulla</p>
+                <p>Seeduwa, Sri Lanka</p>
+                <a href="https://www.google.com/maps/place/Hotel+Royal+Ramesses/@7.1172977,79.8785284,17z/data=!4m21!1m11!3m10!1s0x3ae2f17f837303fb:0x487bda0a22de457e!2sHotel+Royal+Ramesses!5m2!4m1!1i2!8m2!3d7.1172924!4d79.8811033!10e1!16s%2Fg%2F11j0k0w9t3!3m8!1s0x3ae2f17f837303fb:0x487bda0a22de457e!5m2!4m1!1i2!8m2!3d7.1172924!4d79.8811033!16s%2Fg%2F11j0k0w9t3?hl=en&entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D"
+                   target="_blank" class="map-button">Open in
+                    Google Maps</a>
+            </div>
+            <div class="location-card">
+                <h3>🚗 Getting There</h3>
+                <p><strong>By Car:</strong> Ample parking available at the venue</p>
+                <p><strong>By Taxi:</strong> Just mention Hotel Royal Ramesses</p>
+                <p><strong>Valet Service:</strong> Complimentary valet parking available</p>
+                <p style="margin-top: 1rem; font-style: italic; color: var(--primary-color);">
+                    Need accommodation? Special rates available for our guests!
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Memory Gallery Section -->
+<section class="scroll-section" id="gallery-section">
+    <div class="section-content">
+        <p class="section-subtitle">Our Moments</p>
+        <h2 class="section-title easter-egg" onclick="triggerEasterEgg()">Gallery</h2>
+        <div class="ornament">📷</div>
+
+        <!-- Photo Slideshow -->
+        <div
+                style="position: relative; max-width: 800px; margin: 2rem auto; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px var(--shadow-color);">
+            <div id="photoSlideshow" style="position: relative; height: 500px;">
+                <!-- Photo Slideshow using assets images -->
+                <div class="slide active"
+                     style="position: absolute; width: 100%; height: 100%; opacity: 1; transition: opacity 0.5s ease;">
+                    <img src="assets/01.webp" alt="Gallery Image 1" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+                <div class="slide"
+                     style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease;">
+                    <img src="assets/02.webp" alt="Gallery Image 2" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+                <div class="slide"
+                     style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease;">
+                    <img src="assets/03.webp" alt="Gallery Image 3" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+                <div class="slide"
+                     style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease;">
+                    <img src="assets/04.webp" alt="Gallery Image 4" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+                <div class="slide"
+                     style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease;">
+                    <img src="assets/05.webp" alt="Gallery Image 5" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+            </div>
+
+            <!-- Slideshow Controls -->
+            <button onclick="changeSlide(-1)"
+                    style="position: absolute; top: 50%; left: 20px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.5rem; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: all 0.3s ease;">❮</button>
+            <button onclick="changeSlide(1)"
+                    style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.5rem; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: all 0.3s ease;">❯</button>
+
+            <!-- Slide Indicators -->
+            <div
+                    style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px;">
+                    <span class="slide-indicator active" onclick="goToSlide(0)"
+                          style="width: 12px; height: 12px; background: white; border-radius: 50%; cursor: pointer; transition: all 0.3s ease;"></span>
+                <span class="slide-indicator" onclick="goToSlide(1)"
+                      style="width: 12px; height: 12px; background: rgba(255,255,255,0.5); border-radius: 50%; cursor: pointer; transition: all 0.3s ease;"></span>
+                <span class="slide-indicator" onclick="goToSlide(2)"
+                      style="width: 12px; height: 12px; background: rgba(255,255,255,0.5); border-radius: 50%; cursor: pointer; transition: all 0.3s ease;"></span>
+                <span class="slide-indicator" onclick="goToSlide(3)"
+                      style="width: 12px; height: 12px; background: rgba(255,255,255,0.5); border-radius: 50%; cursor: pointer; transition: all 0.3s ease;"></span>
+                <span class="slide-indicator" onclick="goToSlide(4)"
+                      style="width: 12px; height: 12px; background: rgba(255,255,255,0.5); border-radius: 50%; cursor: pointer; transition: all 0.3s ease;"></span>
+            </div>
+        </div>
+
+        <p class="section-text" style="margin-top: 2rem;">
+            Share your favorite moments with us!
+            <br><span style="color: var(--primary-color); font-weight: 600;">#NikiniAndRaveen2026</span>
         </p>
     </div>
+</section>
 
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="hero-content">
-            <div class="personalized-greeting" id="guestGreeting"></div>
-            <p class="hero-subtitle">Together with their families</p>
-            <h1 class="hero-names">
-                Nikini <span class="hero-ampersand">&</span> Raveen
-            </h1>
-            <div class="hero-divider"></div>
-            <p class="hero-subtitle">Request the honor of your presence</p>
-            <p class="hero-subtitle" style="margin-top: 1rem;">at their wedding celebration</p>
-        </div>
-    </section>
+<section class="scroll-section" id="rsvp">
+    <div class="section-content">
+        <p class="section-subtitle">Join Us</p>
+        <h2 class="section-title">Celebrate With Us</h2>
+        <div class="ornament floating-heart">♥</div>
 
-    <!-- Date & Time Section -->
-    <section class="scroll-section" id="datetime-section">
-        <div class="section-content">
-            <!-- Main Date Banner -->
-            <div class="date-banner">
-                <div class="date-banner-top">
-                    <span class="banner-ornament">✦</span>
-                    <p class="section-subtitle" style="margin: 0;">Save The Date</p>
-                    <span class="banner-ornament">✦</span>
-                </div>
-                <div class="date-banner-main">
-                    <div class="date-circle">
-                        <div class="date-day">31</div>
-                        <div class="date-month">January</div>
-                    </div>
-                    <div class="date-details-center">
-                        <h2 class="date-year">2026</h2>
-                        <div class="date-ornament-divider">
-                            <span>❦</span>
-                        </div>
-                        <p class="date-day-name">Saturday</p>
-                    </div>
-                </div>
-            </div>
+        <div class="rsvp-container">
+            <p class="section-text">
+                "Love is not just something you feel, it is something you do."
+                <br><br>
+                <span id="guestGreeting" class="guest-name-highlight">Dear Guest</span>
+                <br>
+                Your presence would mean the world to us as we begin this new chapter.
+                Please join us in celebrating our love and commitment to each other.
+            </p>
 
-            <!-- Event Details Cards -->
-            <div class="event-details-modern">
-                <div class="detail-card-modern time-card">
-                    <div class="detail-icon-wrapper">
-                        <div class="detail-icon">🕐</div>
-                    </div>
-                    <div class="detail-content">
-                        <h3 class="detail-title">Time</h3>
-                        <p class="detail-value">6:00 PM Onwards</p>
-                    </div>
-                </div>
-                <div class="detail-card-modern venue-card">
-                    <div class="detail-icon-wrapper">
-                        <div class="detail-icon">📍</div>
-                    </div>
-                    <div class="detail-content">
-                        <h3 class="detail-title">Venue</h3>
-                        <p class="detail-value">Hotel Royal Ramesses</p>
-                        <p class="detail-value" style="font-size: 0.7rem;">(Skylar Princess Banquet, 2nd Floor)</p>
-                    </div>
-                </div>
-            </div>
+            <div class="section-content">
+                <p class="rsvp-question">Will you be attending?</p>
 
-            <!-- Countdown Timer -->
-            <div style="margin-top: 3rem;">
-                <p class="section-subtitle">Counting Down</p>
-                <div class="countdown-container" id="countdown">
-                    <div class="countdown-box">
-                        <div class="countdown-number" id="days">--</div>
-                        <div class="countdown-label">Days</div>
+                <div class="rsvp-options-wrapper">
+                    <div class="rsvp-option-item">
+                        <button type="button" class="rsvp-emoji-btn btn-yes" onclick="submitRSVP('Attending')"
+                                aria-label="Yes">
+                            ✔
+                        </button>
+                        <span>YES</span>
                     </div>
-                    <div class="countdown-box">
-                        <div class="countdown-number" id="hours">--</div>
-                        <div class="countdown-label">Hours</div>
-                    </div>
-                    <div class="countdown-box">
-                        <div class="countdown-number" id="minutes">--</div>
-                        <div class="countdown-label">Minutes</div>
-                    </div>
-                    <div class="countdown-box">
-                        <div class="countdown-number" id="seconds">--</div>
-                        <div class="countdown-label">Seconds</div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Add to Calendar Button -->
-            <button class="calendar-button" id="addToCalendar">
-                📅 Add to Calendar
-            </button>
-        </div>
-    </section>
+                    <div class="rsvp-option-item">
+                        <button type="button" class="rsvp-emoji-btn btn-no" onclick="submitRSVP('Not Attending')"
+                                aria-label="No">
+                            ✖
+                        </button>
+                        <span>NO</span>
+                    </div>
+                </div>
 
-    <!-- Wedding Schedule Section -->
-    <section class="scroll-section" id="schedule-section">
-        <div class="section-content">
-            <p class="section-subtitle">Wedding Day</p>
-            <h2 class="section-title">Schedule</h2>
-            <div class="ornament sparkle">✦</div>
-
-            <div class="schedule-grid">
-                <div class="schedule-item">
-                    <div class="schedule-time">6:00 PM</div>
-                    <div class="schedule-details">
-                        <h3>💒 Church Ceremony Begins</h3>
-                        <p>Witness our vows and the beginning of our forever</p>
-                    </div>
-                </div>
-                <div class="schedule-item">
-                    <div class="schedule-time">7:00 PM</div>
-                    <div class="schedule-details">
-                        <h3>💐 Guest Arrival & Welcome Drinks</h3>
-                        <p>Join us for a refreshing welcome as we gather to celebrate</p>
-                    </div>
-                </div>
-                
-                <div class="schedule-item">
-                    <div class="schedule-time">7:30 PM</div>
-                    <div class="schedule-details">
-                        <h3>📸 Photo Session</h3>
-                        <p>Capture beautiful moments with the newlyweds</p>
-                    </div>
-                </div>
-                <div class="schedule-item">
-                    <div class="schedule-time">8:00 PM</div>
-                    <div class="schedule-details">
-                        <h3>🍽️ Reception & Dinner</h3>
-                        <p>Enjoy a delightful feast and heartfelt toasts</p>
-                    </div>
-                </div>
-                <div class="schedule-item">
-                    <div class="schedule-time">9:00 PM</div>
-                    <div class="schedule-details">
-                        <h3>💃 Dance & Celebration</h3>
-                        <p>Let's dance the night away under the stars</p>
-                    </div>
-                </div>
-                <div class="schedule-item">
-                    <div class="schedule-time">12:00 PM</div>
-                    <div class="schedule-details">
-                        <h3>🌙 End of the Ceremony</h3>
-                        <p>The wedding is over, but the party continues!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Story Section -->
-    <section class="scroll-section" id="story-section">
-        <div class="section-content">
-            <p class="section-subtitle">Our Journey</p>
-            <h2 class="section-title">Love Story</h2>
-            <div class="ornament">✿</div>
-
-            <div class="story-timeline">
-                <div class="story-item">
-                    <div class="story-year">The Beginning</div>
-                    <div class="story-description">
-                        When two hearts meet, destiny unfolds. What started as a simple hello became a lifetime promise.
-                    </div>
-                </div>
-                <div class="story-item">
-                    <div class="story-year">Our Journey</div>
-                    <div class="story-description">
-                        Through every laugh, every dream, and every moment shared, we discovered that love is not about
-                        finding the perfect person, but seeing an imperfect person perfectly.
-                    </div>
-                </div>
-                <div class="story-item">
-                    <div class="story-year">The Promise</div>
-                    <div class="story-description">
-                        With hearts full of hope and souls intertwined, we chose each other—today, tomorrow, and for all
-                        our tomorrows.
-                    </div>
-                </div>
-                <div class="story-item">
-                    <div class="story-year">Forever Begins</div>
-                    <div class="story-description">
-                        Join us as we celebrate our love and begin the most beautiful chapter of our lives together.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dress Code Section -->
-    <section class="scroll-section" id="dresscode-section">
-        <div class="section-content">
-            <p class="section-subtitle">What To Wear</p>
-            <h2 class="section-title">Dress Code</h2>
-            <div class="ornament">👗</div>
-
-            <div class="dress-code-cards">
-                <div class="dress-card">
-                    <div class="dress-icon">🤵</div>
-                    <div class="dress-title">Gentlemen</div>
-                    <div class="dress-description">Formal suits in black or dark colors. Sage green accessories welcome!
-                    </div>
-                </div>
-                <div class="dress-card">
-                    <div class="dress-icon">👰</div>
-                    <div class="dress-title">Ladies</div>
-                    <div class="dress-description">Elegant evening gowns. Feel free to embrace our sage green theme!
-                    </div>
-                </div>
-                <div class="dress-card">
-                    <div class="dress-icon">🎨</div>
-                    <div class="dress-title">Color Theme</div>
-                    <div class="dress-description">Sage Green, White & Black - but wear what makes you feel beautiful!
-                    </div>
-                </div>
+                <p id="submissionStatus"></p>
             </div>
 
             <div class="special-message">
                 <p>
-                    We want you to feel comfortable and confident. While we love our sage green, white, and black theme,
-                    what matters most is that you're there to celebrate with us. Dress to impress, but most
-                    importantly, dress to enjoy the evening!
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Location & Directions Section -->
-    <section class="scroll-section" id="location-section">
-        <div class="section-content">
-            <p class="section-subtitle">How To Get There</p>
-            <h2 class="section-title">Location & Directions</h2>
-            <div class="ornament">🗺️</div>
-
-            <!-- Interactive Map with Dark Mode Support -->
-            <div
-                style="margin: 2rem 0; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px var(--shadow-color); height: 400px; position: relative;">
-                <!-- Light Theme Map -->
-                <iframe id="mapLight" class="map-iframe light-map"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.223823512016!2d79.8785284!3d7.1172977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2f17f837303fb%3A0x487bda0a22de457e!2sHotel%20Royal%20Ramesses!5e0!3m2!1sen!2slk!4v1733730000000"
-                    width="100%" height="400" style="border:0;" allowfullscreen loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-
-
-                <!-- Dark Theme Map (same location with dark styling) -->
-                <iframe id="mapDark" class="map-iframe dark-map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.223823512016!2d79.8785284!3d7.1172977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2f17f837303fb%3A0x487bda0a22de457e!2sHotel%20Royal%20Ramesses!5e0!3m2!1sen!2slk!4v1733730000000"
-                width="100%" height="400"
-                    style="border:0; filter: invert(90%) hue-rotate(180deg) brightness(0.95) contrast(0.9);"
-                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
-
-            <div class="location-info">
-                <div class="location-card">
-                    <h3>📍 Venue Address</h3>
-                    <p><strong>Hotel Royal Ramesses</strong></p>
-                    <p>No.09, Ambalanmulla</p>
-                    <p>Seeduwa, Sri Lanka</p>
-                    <a href="https://www.google.com/maps/place/Hotel+Royal+Ramesses/@7.1172977,79.8785284,17z/data=!4m21!1m11!3m10!1s0x3ae2f17f837303fb:0x487bda0a22de457e!2sHotel+Royal+Ramesses!5m2!4m1!1i2!8m2!3d7.1172924!4d79.8811033!10e1!16s%2Fg%2F11j0k0w9t3!3m8!1s0x3ae2f17f837303fb:0x487bda0a22de457e!5m2!4m1!1i2!8m2!3d7.1172924!4d79.8811033!16s%2Fg%2F11j0k0w9t3?hl=en&entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D"
-                        target="_blank" class="map-button">Open in
-                        Google Maps</a>
-                </div>
-                <div class="location-card">
-                    <h3>🚗 Getting There</h3>
-                    <p><strong>By Car:</strong> Ample parking available at the venue</p>
-                    <p><strong>By Taxi:</strong> Just mention Hotel Royal Ramesses</p>
-                    <p><strong>Valet Service:</strong> Complimentary valet parking available</p>
-                    <p style="margin-top: 1rem; font-style: italic; color: var(--primary-color);">
-                        Need accommodation? Special rates available for our guests!
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Memory Gallery Section -->
-    <section class="scroll-section" id="gallery-section">
-        <div class="section-content">
-            <p class="section-subtitle">Our Moments</p>
-            <h2 class="section-title easter-egg" onclick="triggerEasterEgg()">Gallery</h2>
-            <div class="ornament">📷</div>
-
-            <!-- Photo Slideshow -->
-            <div
-                style="position: relative; max-width: 800px; margin: 2rem auto; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px var(--shadow-color);">
-                <div id="photoSlideshow" style="position: relative; height: 500px;">
-                    <!-- Photo Slideshow using assets images -->
-                    <div class="slide active"
-                        style="position: absolute; width: 100%; height: 100%; opacity: 1; transition: opacity 0.5s ease;">
-                        <img src="assets/01.webp" alt="Gallery Image 1" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <div class="slide"
-                        style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease;">
-                        <img src="assets/02.webp" alt="Gallery Image 2" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <div class="slide"
-                        style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease;">
-                        <img src="assets/03.webp" alt="Gallery Image 3" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <div class="slide"
-                        style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease;">
-                        <img src="assets/04.webp" alt="Gallery Image 4" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <div class="slide"
-                        style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease;">
-                        <img src="assets/05.webp" alt="Gallery Image 5" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                </div>
-
-                <!-- Slideshow Controls -->
-                <button onclick="changeSlide(-1)"
-                    style="position: absolute; top: 50%; left: 20px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.5rem; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: all 0.3s ease;">❮</button>
-                <button onclick="changeSlide(1)"
-                    style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.5rem; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: all 0.3s ease;">❯</button>
-
-                <!-- Slide Indicators -->
-                <div
-                    style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px;">
-                    <span class="slide-indicator active" onclick="goToSlide(0)"
-                        style="width: 12px; height: 12px; background: white; border-radius: 50%; cursor: pointer; transition: all 0.3s ease;"></span>
-                    <span class="slide-indicator" onclick="goToSlide(1)"
-                        style="width: 12px; height: 12px; background: rgba(255,255,255,0.5); border-radius: 50%; cursor: pointer; transition: all 0.3s ease;"></span>
-                    <span class="slide-indicator" onclick="goToSlide(2)"
-                        style="width: 12px; height: 12px; background: rgba(255,255,255,0.5); border-radius: 50%; cursor: pointer; transition: all 0.3s ease;"></span>
-                    <span class="slide-indicator" onclick="goToSlide(3)"
-                        style="width: 12px; height: 12px; background: rgba(255,255,255,0.5); border-radius: 50%; cursor: pointer; transition: all 0.3s ease;"></span>
-                    <span class="slide-indicator" onclick="goToSlide(4)"
-                        style="width: 12px; height: 12px; background: rgba(255,255,255,0.5); border-radius: 50%; cursor: pointer; transition: all 0.3s ease;"></span>
-                </div>
-            </div>
-
-            <p class="section-text" style="margin-top: 2rem;">
-                Share your favorite moments with us!
-                <br><span style="color: var(--primary-color); font-weight: 600;">#NikiniAndRaveen2026</span>
-            </p>
-        </div>
-    </section>
-
-    <section class="scroll-section" id="rsvp">
-        <div class="section-content">
-            <p class="section-subtitle">Join Us</p>
-            <h2 class="section-title">Celebrate With Us</h2>
-            <div class="ornament floating-heart">♥</div>
-
-            <div class="rsvp-container">
-            <p class="section-text">
-                "Love is not just something you feel, it is something you do."
-                <br><br>
-                    <span id="guestGreeting" class="guest-name-highlight">Dear Guest</span>
-                    <br>
-                Your presence would mean the world to us as we begin this new chapter.
-                    Please join us in celebrating our love and commitment to each other.
-                </p>
-
-                <div class="section-content">
-                    <p class="rsvp-question">Will you be attending?</p>
-
-                    <div class="rsvp-options-wrapper">
-                        <div class="rsvp-option-item">
-                            <button type="button" class="rsvp-emoji-btn btn-yes" onclick="submitRSVP('Attending')"
-                                aria-label="Yes">
-                                ✔
-                            </button>
-                            <span>YES</span>
-                        </div>
-
-                        <div class="rsvp-option-item">
-                            <button type="button" class="rsvp-emoji-btn btn-no" onclick="submitRSVP('Not Attending')"
-                                aria-label="No">
-                                ✖
-                            </button>
-                            <span>NO</span>
-                        </div>
-                    </div>
-
-                    <p id="submissionStatus"></p>
-                </div>
-
-                <div class="special-message">
-                <p>
                     <strong>Please RSVP by January 15th, 2026</strong><br>
-                        We can't wait to celebrate with you!
+                    We can't wait to celebrate with you!
                 </p>
-                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <p class="footer-text">Can't wait to celebrate with you!</p>
-        <div class="footer-hearts">♥ ♥ ♥</div>
-        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Nikini & Raveen • January 31st, 2026</p>
-    </footer>
+<!-- Footer -->
+<footer>
+    <p class="footer-text">Can't wait to celebrate with you!</p>
+    <div class="footer-hearts">♥ ♥ ♥</div>
+    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Nikini & Raveen • January 31st, 2026</p>
+</footer>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
 
-    <!-- Dark Mode Script -->
-    <script>
-        // Dark Mode Toggle Functionality with Map Switching
-        (function () {
-            const themeToggle = document.getElementById('themeToggle');
-            const html = document.documentElement;
-            const mapLight = document.getElementById('mapLight');
-            const mapDark = document.getElementById('mapDark');
+<!-- Dark Mode Script -->
+<script>
+    // Dark Mode Toggle Functionality with Map Switching
+    (function () {
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const mapLight = document.getElementById('mapLight');
+        const mapDark = document.getElementById('mapDark');
 
-            // Check for saved theme preference or default to light mode
-            const currentTheme = localStorage.getItem('theme') || 'light';
-            html.setAttribute('data-theme', currentTheme);
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', currentTheme);
 
-            // Function to switch maps based on theme
-            function switchMaps(theme) {
-                if (mapLight && mapDark) {
-                    if (theme === 'dark') {
-                        mapLight.style.display = 'none';
-                        mapLight.style.opacity = '0';
-                        mapDark.style.display = 'block';
-                        setTimeout(() => {
-                            mapDark.style.opacity = '1';
-                        }, 50);
-                    } else {
-                        mapDark.style.display = 'none';
-                        mapDark.style.opacity = '0';
-                        mapLight.style.display = 'block';
-                        setTimeout(() => {
-                            mapLight.style.opacity = '1';
-                        }, 50);
-                    }
-                }
-            }
-
-            // Initialize map visibility
-            switchMaps(currentTheme);
-
-            // Toggle theme function
-            function toggleTheme() {
-                const currentTheme = html.getAttribute('data-theme');
-                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-                html.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-
-                // Switch maps with new theme
-                switchMaps(newTheme);
-
-                // Add a subtle animation to the toggle button
-                themeToggle.style.transform = 'scale(0.9) rotate(180deg)';
-                setTimeout(() => {
-                    themeToggle.style.transform = '';
-                }, 300);
-
-                console.log(`🗺️ Map switched to ${newTheme} theme`);
-            }
-
-            // Event listener for the toggle button
-            themeToggle.addEventListener('click', toggleTheme);
-
-            // Optional: Listen for system theme preference changes
-            if (window.matchMedia) {
-                const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-                // Only auto-switch if user hasn't manually set a preference
-                if (!localStorage.getItem('theme')) {
-                    const systemTheme = darkModeQuery.matches ? 'dark' : 'light';
-                    html.setAttribute('data-theme', systemTheme);
-                    switchMaps(systemTheme);
-                }
-
-                darkModeQuery.addEventListener('change', (e) => {
-                    if (!localStorage.getItem('theme')) {
-                        const newTheme = e.matches ? 'dark' : 'light';
-                        html.setAttribute('data-theme', newTheme);
-                        switchMaps(newTheme);
-                    }
-                });
-            }
-        })();
-    </script>
-
-    <!-- Advanced Features Script -->
-    <script>
-        // 1. PERSONALIZED GREETING
-        (function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            const guestName = urlParams.get('guest') || urlParams.get('name');
-            const greetingElement = document.getElementById('guestGreeting');
-
-            if (guestName && greetingElement) {
-                greetingElement.textContent = `Welcome, ${decodeURIComponent(guestName)}! 💕`;
-            }
-        })();
-
-        // 2. BACKGROUND MUSIC PLAYER (Enhanced with Auto-play, Expand/Collapse & Modern Design)
-        (function () {
-            const musicPlayer = document.getElementById('musicPlayer');
-            const musicToggle = document.getElementById('musicToggle');
-            const bgMusic = document.getElementById('bgMusic');
-            const playingIcon = musicToggle.querySelector('.playing');
-            const pausedIcon = musicToggle.querySelector('.paused');
-            const volumeSlider = document.getElementById('volumeSlider');
-            const musicText = document.getElementById('musicText');
-            const musicStatus = document.getElementById('musicStatus');
-            let isPlaying = false;
-            let collapseTimer = null;
-            let isExpanded = false; // Start collapsed
-
-            // Set initial volume and ensure audio is ready
-            bgMusic.volume = 0.7;
-            bgMusic.muted = false; // Ensure not muted
-            
-            // Try to load and play immediately
-            bgMusic.load(); // Force reload to ensure it's ready
-
-            // Update volume slider background
-            function updateVolumeSlider() {
-                const percentage = volumeSlider.value;
-                volumeSlider.style.background = `linear-gradient(90deg, var(--primary-color) 0%, var(--primary-color) ${percentage}%, rgba(135, 169, 107, 0.2) ${percentage}%, rgba(135, 169, 107, 0.2) 100%)`;
-            }
-            updateVolumeSlider();
-            
-            // Function to update UI when playing
-            function updatePlayingUI() {
-                playingIcon.style.display = 'inline';
-                pausedIcon.style.display = 'none';
-                musicText.textContent = 'Romantic Piano';
-                musicStatus.textContent = 'Now Playing ♫';
-                musicToggle.classList.add('playing');
-                isPlaying = true;
-            }
-
-            // Function to update UI when paused
-            function updatePausedUI() {
-                playingIcon.style.display = 'none';
-                pausedIcon.style.display = 'inline';
-                musicText.textContent = 'Romantic Piano';
-                musicStatus.textContent = 'Paused';
-                musicToggle.classList.remove('playing');
-                isPlaying = false;
-            }
-
-            // Auto-play on page load
-            function attemptAutoPlay() {
-                // Ensure volume and muted state are set
-                bgMusic.volume = 0.7;
-                bgMusic.muted = false;
-                
-                const playPromise = bgMusic.play();
-                
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        updatePlayingUI();
-                        console.log('▶️ Music auto-playing! 🎵');
-                        // Widget stays collapsed when auto-playing
-                    }).catch(error => {
-                        console.log('⚠️ Autoplay prevented by browser:', error);
-                        // Don't update UI to paused, keep trying
-                        musicStatus.textContent = 'Click to play';
-                    });
-                } else {
-                    // Fallback for older browsers
-                    try {
-                        bgMusic.play();
-                        updatePlayingUI();
-                        console.log('▶️ Music playing (fallback)! 🎵');
-                    } catch (e) {
-                        console.log('⚠️ Play failed:', e);
-                    }
-                }
-            }
-            
-            // Immediate attempt to play (before any events)
-            setTimeout(() => {
-                if (bgMusic.readyState >= 2) { // HAVE_CURRENT_DATA or higher
-                    attemptAutoPlay();
-                }
-            }, 0);
-
-            // Expand/collapse functions
-            function expandPlayer() {
-                if (!isExpanded) {
-                    musicPlayer.classList.remove('collapsed');
-                    musicPlayer.classList.add('expanded');
-                    isExpanded = true;
-                    resetCollapseTimer();
-                }
-            }
-
-            function collapsePlayer() {
-                if (isExpanded) {
-                    musicPlayer.classList.remove('expanded');
-                    musicPlayer.classList.add('collapsed');
-                    isExpanded = false;
-                    clearCollapseTimer();
-                }
-            }
-
-            function resetCollapseTimer() {
-                clearCollapseTimer();
-                // Auto-collapse after 2 seconds of inactivity
-                collapseTimer = setTimeout(() => {
-                    collapsePlayer();
-                }, 2000);
-            }
-
-            function clearCollapseTimer() {
-                if (collapseTimer) {
-                    clearTimeout(collapseTimer);
-                    collapseTimer = null;
-                }
-            }
-
-            // Expand on hover or click
-            musicPlayer.addEventListener('mouseenter', expandPlayer);
-            musicPlayer.addEventListener('click', function(e) {
-                // Don't expand if clicking the toggle button
-                if (e.target !== musicToggle && !musicToggle.contains(e.target)) {
-                    expandPlayer();
-                }
-            });
-
-            // Auto-collapse when mouse leaves (only if expanded)
-            musicPlayer.addEventListener('mouseleave', function() {
-                if (isExpanded) {
-                    resetCollapseTimer();
-                }
-            });
-
-            // Prevent collapse when interacting with volume slider
-            volumeSlider.addEventListener('mousedown', clearCollapseTimer);
-            volumeSlider.addEventListener('mouseup', resetCollapseTimer);
-            volumeSlider.addEventListener('input', resetCollapseTimer);
-
-            // Add loading event listeners - try multiple events for best compatibility
-            bgMusic.addEventListener('canplay', function () {
-                console.log('🎵 Audio can play');
-                if (!isPlaying) {
-                    attemptAutoPlay();
-                }
-            }, { once: true });
-
-            bgMusic.addEventListener('canplaythrough', function () {
-                console.log('🎵 Audio can play through');
-                if (!isPlaying) {
-                    attemptAutoPlay();
-                }
-            }, { once: true });
-
-            bgMusic.addEventListener('loadeddata', function () {
-                console.log('✅ Music loaded successfully!');
-                musicText.textContent = 'Romantic Piano';
-                musicStatus.textContent = 'Ready to play';
-                
-                // Auto-play immediately when loaded
-                if (!isPlaying) {
-                    attemptAutoPlay();
-                }
-            }, { once: true });
-
-            bgMusic.addEventListener('error', function (e) {
-                console.error('❌ Music loading error:', e);
-                musicText.textContent = 'Music unavailable';
-                musicStatus.textContent = 'Error loading';
-            });
-
-            // Try auto-play immediately when DOM is ready
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(() => {
-                if (!isPlaying) {
-                            attemptAutoPlay();
-                        }
+        // Function to switch maps based on theme
+        function switchMaps(theme) {
+            if (mapLight && mapDark) {
+                if (theme === 'dark') {
+                    mapLight.style.display = 'none';
+                    mapLight.style.opacity = '0';
+                    mapDark.style.display = 'block';
+                    setTimeout(() => {
+                        mapDark.style.opacity = '1';
                     }, 50);
+                } else {
+                    mapDark.style.display = 'none';
+                    mapDark.style.opacity = '0';
+                    mapLight.style.display = 'block';
+                    setTimeout(() => {
+                        mapLight.style.opacity = '1';
+                    }, 50);
+                }
+            }
+        }
+
+        // Initialize map visibility
+        switchMaps(currentTheme);
+
+        // Toggle theme function
+        function toggleTheme() {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            // Switch maps with new theme
+            switchMaps(newTheme);
+
+            // Add a subtle animation to the toggle button
+            themeToggle.style.transform = 'scale(0.9) rotate(180deg)';
+            setTimeout(() => {
+                themeToggle.style.transform = '';
+            }, 300);
+
+            console.log(`🗺️ Map switched to ${newTheme} theme`);
+        }
+
+        // Event listener for the toggle button
+        themeToggle.addEventListener('click', toggleTheme);
+
+        // Optional: Listen for system theme preference changes
+        if (window.matchMedia) {
+            const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+            // Only auto-switch if user hasn't manually set a preference
+            if (!localStorage.getItem('theme')) {
+                const systemTheme = darkModeQuery.matches ? 'dark' : 'light';
+                html.setAttribute('data-theme', systemTheme);
+                switchMaps(systemTheme);
+            }
+
+            darkModeQuery.addEventListener('change', (e) => {
+                if (!localStorage.getItem('theme')) {
+                    const newTheme = e.matches ? 'dark' : 'light';
+                    html.setAttribute('data-theme', newTheme);
+                    switchMaps(newTheme);
+                }
+            });
+        }
+    })();
+</script>
+
+<!-- Advanced Features Script -->
+<script>
+    // 1. PERSONALIZED GREETING
+    (function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const guestName = urlParams.get('guest') || urlParams.get('name');
+        const greetingElement = document.getElementById('guestGreeting');
+
+        if (guestName && greetingElement) {
+            greetingElement.textContent = `Welcome, ${decodeURIComponent(guestName)}! 💕`;
+        }
+    })();
+
+    // 2. BACKGROUND MUSIC PLAYER (Enhanced with Auto-play, Expand/Collapse & Modern Design)
+    (function () {
+        const musicPlayer = document.getElementById('musicPlayer');
+        const musicToggle = document.getElementById('musicToggle');
+        const bgMusic = document.getElementById('bgMusic');
+        const playingIcon = musicToggle.querySelector('.playing');
+        const pausedIcon = musicToggle.querySelector('.paused');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const musicText = document.getElementById('musicText');
+        const musicStatus = document.getElementById('musicStatus');
+        let isPlaying = false;
+        let collapseTimer = null;
+        let isExpanded = false; // Start collapsed
+
+        // Set initial volume and ensure audio is ready
+        bgMusic.volume = 0.7;
+
+        // Strategy: Start muted (browsers allow muted autoplay), then unmute once playing
+        bgMusic.muted = true; // Start muted to bypass autoplay restrictions
+
+        // Try to load and play immediately
+        bgMusic.load(); // Force reload to ensure it's ready
+
+        // Update volume slider background
+        function updateVolumeSlider() {
+            const percentage = volumeSlider.value;
+            volumeSlider.style.background = `linear-gradient(90deg, var(--primary-color) 0%, var(--primary-color) ${percentage}%, rgba(135, 169, 107, 0.2) ${percentage}%, rgba(135, 169, 107, 0.2) 100%)`;
+        }
+        updateVolumeSlider();
+
+        // Function to update UI when playing
+        function updatePlayingUI() {
+            playingIcon.style.display = 'inline';
+            pausedIcon.style.display = 'none';
+            musicText.textContent = 'Romantic Piano';
+            musicStatus.textContent = 'Now Playing ♫';
+            musicToggle.classList.add('playing');
+            isPlaying = true;
+        }
+
+        // Function to update UI when paused
+        function updatePausedUI() {
+            playingIcon.style.display = 'none';
+            pausedIcon.style.display = 'inline';
+            musicText.textContent = 'Romantic Piano';
+            musicStatus.textContent = 'Paused';
+            musicToggle.classList.remove('playing');
+            isPlaying = false;
+        }
+
+        // Auto-play on page load - try muted first, then unmute
+        function attemptAutoPlay(forceUnmute = false) {
+            // Try muted first (browsers allow muted autoplay)
+            if (!forceUnmute) {
+                bgMusic.muted = true;
+            } else {
+                bgMusic.muted = false;
+            }
+
+            bgMusic.volume = 0.7;
+
+            const playPromise = bgMusic.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // If we started muted, unmute it now
+                    if (bgMusic.muted) {
+                        setTimeout(() => {
+                            bgMusic.muted = false;
+                            console.log('🔊 Unmuted after autoplay');
+                        }, 100);
+                    }
+                    updatePlayingUI();
+                    console.log('▶️ Music auto-playing! 🎵');
+                    // Widget stays collapsed when auto-playing
+                }).catch(error => {
+                    console.log('⚠️ Autoplay prevented by browser:', error);
+                    // Try again with muted if unmuted failed
+                    if (!bgMusic.muted && !forceUnmute) {
+                        setTimeout(() => attemptAutoPlay(false), 100);
+                    } else {
+                        musicStatus.textContent = 'Click to play';
+                    }
                 });
             } else {
-                // DOM already loaded
-                setTimeout(() => {
-                    if (!isPlaying) {
+                // Fallback for older browsers
+                try {
+                    bgMusic.play();
+                    if (bgMusic.muted) {
+                        setTimeout(() => {
+                            bgMusic.muted = false;
+                        }, 100);
+                    }
+                    updatePlayingUI();
+                    console.log('▶️ Music playing (fallback)! 🎵');
+                } catch (e) {
+                    console.log('⚠️ Play failed:', e);
+                }
+            }
+        }
+
+        // IMMEDIATE play attempt - try right now as soon as functions are defined
+        (function immediatePlay() {
+            try {
+                if (bgMusic.readyState >= 1) { // HAVE_METADATA or higher
+                    bgMusic.play().then(() => {
+                        console.log('🎵 Immediate play succeeded!');
+                        setTimeout(() => {
+                            bgMusic.muted = false;
+                            updatePlayingUI();
+                        }, 50);
+                    }).catch(() => {
+                        // Will try again with other methods
+                    });
+                }
+            } catch(e) {
+                // Will try again with other methods
+            }
+        })();
+
+        // Immediate attempt to play (before any events) - multiple attempts
+        setTimeout(() => {
+            attemptAutoPlay();
+        }, 0);
+
+        setTimeout(() => {
+            if (!isPlaying && bgMusic.readyState >= 1) {
+                attemptAutoPlay();
+            }
+        }, 10);
+
+        setTimeout(() => {
+            if (!isPlaying && bgMusic.readyState >= 2) {
+                attemptAutoPlay();
+            }
+        }, 50);
+
+        // Expand/collapse functions
+        function expandPlayer() {
+            if (!isExpanded) {
+                musicPlayer.classList.remove('collapsed');
+                musicPlayer.classList.add('expanded');
+                isExpanded = true;
+                resetCollapseTimer();
+            }
+        }
+
+        function collapsePlayer() {
+            if (isExpanded) {
+                musicPlayer.classList.remove('expanded');
+                musicPlayer.classList.add('collapsed');
+                isExpanded = false;
+                clearCollapseTimer();
+            }
+        }
+
+        function resetCollapseTimer() {
+            clearCollapseTimer();
+            // Auto-collapse after 2 seconds of inactivity
+            collapseTimer = setTimeout(() => {
+                collapsePlayer();
+            }, 2000);
+        }
+
+        function clearCollapseTimer() {
+            if (collapseTimer) {
+                clearTimeout(collapseTimer);
+                collapseTimer = null;
+            }
+        }
+
+        // Expand on hover or click
+        musicPlayer.addEventListener('mouseenter', expandPlayer);
+        musicPlayer.addEventListener('click', function(e) {
+            // Don't expand if clicking the toggle button
+            if (e.target !== musicToggle && !musicToggle.contains(e.target)) {
+                expandPlayer();
+            }
+        });
+
+        // Auto-collapse when mouse leaves (only if expanded)
+        musicPlayer.addEventListener('mouseleave', function() {
+            if (isExpanded) {
+                resetCollapseTimer();
+            }
+        });
+
+        // Prevent collapse when interacting with volume slider
+        volumeSlider.addEventListener('mousedown', clearCollapseTimer);
+        volumeSlider.addEventListener('mouseup', resetCollapseTimer);
+        volumeSlider.addEventListener('input', resetCollapseTimer);
+
+        // Add loading event listeners - try multiple events for best compatibility
+        // Try on loadstart (very early)
+        bgMusic.addEventListener('loadstart', function () {
+            console.log('🎵 Audio load started');
+            setTimeout(() => {
+                if (!isPlaying) {
+                    attemptAutoPlay();
+                }
+            }, 100);
+        }, { once: true });
+
+        bgMusic.addEventListener('canplay', function () {
+            console.log('🎵 Audio can play');
+            if (!isPlaying) {
+                attemptAutoPlay();
+            }
+        }, { once: true });
+
+        bgMusic.addEventListener('canplaythrough', function () {
+            console.log('🎵 Audio can play through');
+            if (!isPlaying) {
+                attemptAutoPlay();
+            }
+        }, { once: true });
+
+        bgMusic.addEventListener('loadeddata', function () {
+            console.log('✅ Music loaded successfully!');
+            musicText.textContent = 'Romantic Piano';
+            musicStatus.textContent = 'Ready to play';
+
+            // Auto-play immediately when loaded
+            if (!isPlaying) {
+                attemptAutoPlay();
+            }
+        }, { once: true });
+
+        bgMusic.addEventListener('error', function (e) {
+            console.error('❌ Music loading error:', e);
+            musicText.textContent = 'Music unavailable';
+            musicStatus.textContent = 'Error loading';
+        });
+
+        // Try auto-play immediately when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(() => {
+            if (!isPlaying) {
                         attemptAutoPlay();
                     }
                 }, 50);
+            });
+        } else {
+            // DOM already loaded
+            setTimeout(() => {
+                if (!isPlaying) {
+                    attemptAutoPlay();
+                }
+            }, 50);
+        }
+
+        // Try auto-play when page is fully loaded
+        window.addEventListener('load', function() {
+                setTimeout(() => {
+                if (!isPlaying) {
+                    attemptAutoPlay();
+                }
+            }, 100);
+        });
+
+        // Additional attempts at various intervals
+        setTimeout(() => {
+            if (!isPlaying) {
+                attemptAutoPlay();
             }
+        }, 200);
 
-            // Try auto-play when page is fully loaded
-            window.addEventListener('load', function() {
-                    setTimeout(() => {
-                    if (!isPlaying) {
-                        attemptAutoPlay();
-                    }
-                }, 100);
-            });
+        setTimeout(() => {
+            if (!isPlaying) {
+                attemptAutoPlay();
+            }
+        }, 500);
 
-            // Additional attempts at various intervals
-            setTimeout(() => {
-                if (!isPlaying) {
-                    attemptAutoPlay();
-                }
-            }, 200);
-            
-            setTimeout(() => {
-                if (!isPlaying) {
-                    attemptAutoPlay();
-                }
-            }, 500);
-            
-            setTimeout(() => {
-                if (!isPlaying) {
-                    attemptAutoPlay();
-                }
-            }, 1000);
+        setTimeout(() => {
+            if (!isPlaying) {
+                attemptAutoPlay();
+            }
+        }, 1000);
 
-            // Also try on any user interaction (fallback)
-            let hasTriedAutoPlay = false;
-            function tryAutoPlayOnInteraction() {
-                if (!hasTriedAutoPlay && !isPlaying) {
-                    hasTriedAutoPlay = true;
-                    attemptAutoPlay();
+        // Try on ANY user interaction - be very aggressive
+        function tryAutoPlayOnInteraction() {
+            if (!isPlaying) {
+                // Try unmuted on user interaction (user gesture allows unmuted play)
+                attemptAutoPlay(true);
+            }
+        }
+
+        // Listen to multiple interaction events
+        document.addEventListener('click', tryAutoPlayOnInteraction);
+        document.addEventListener('touchstart', tryAutoPlayOnInteraction);
+        document.addEventListener('touchend', tryAutoPlayOnInteraction);
+        document.addEventListener('mousedown', tryAutoPlayOnInteraction);
+        document.addEventListener('scroll', tryAutoPlayOnInteraction);
+        document.addEventListener('keydown', tryAutoPlayOnInteraction);
+        document.addEventListener('pointerdown', tryAutoPlayOnInteraction);
+
+        // Also try on mouse movement (some browsers consider this interaction)
+        let mouseMoveAttempts = 0;
+        document.addEventListener('mousemove', function() {
+            if (!isPlaying && mouseMoveAttempts < 3) {
+                mouseMoveAttempts++;
+                tryAutoPlayOnInteraction();
+            }
+        });
+
+        // Toggle play/pause
+        musicToggle.addEventListener('click', function (e) {
+            e.stopPropagation(); // Prevent expanding when clicking toggle
+            e.preventDefault();
+
+            if (isPlaying) {
+                bgMusic.pause();
+                updatePausedUI();
+                console.log('⏸️ Music paused');
+            } else {
+                const playPromise = bgMusic.play();
+
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        updatePlayingUI();
+                        console.log('▶️ Music playing! 🎵');
+                    }).catch(error => {
+                        console.log('⚠️ Play prevented:', error);
+                        musicStatus.textContent = 'Click to play';
+                    });
                 }
             }
+        });
 
-            document.addEventListener('click', tryAutoPlayOnInteraction, { once: true });
-            document.addEventListener('touchstart', tryAutoPlayOnInteraction, { once: true });
-            document.addEventListener('scroll', tryAutoPlayOnInteraction, { once: true });
+        // Volume control
+        volumeSlider.addEventListener('input', function () {
+            bgMusic.volume = this.value / 100;
+            updateVolumeSlider();
+        });
+    })();
 
-            // Toggle play/pause
-            musicToggle.addEventListener('click', function (e) {
-                e.stopPropagation(); // Prevent expanding when clicking toggle
-                e.preventDefault();
+    // 3. PARALLAX SCROLLING
+    (function () {
+        const parallaxElements = document.querySelectorAll('.parallax-element');
 
-                if (isPlaying) {
-                    bgMusic.pause();
-                    updatePausedUI();
-                    console.log('⏸️ Music paused');
-                } else {
-                    const playPromise = bgMusic.play();
-
-                    if (playPromise !== undefined) {
-                        playPromise.then(() => {
-                            updatePlayingUI();
-                            console.log('▶️ Music playing! 🎵');
-                        }).catch(error => {
-                            console.log('⚠️ Play prevented:', error);
-                            musicStatus.textContent = 'Click to play';
-                        });
-                    }
-                }
+        window.addEventListener('scroll', function () {
+            const scrolled = window.pageYOffset;
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px)`;
             });
+        });
+    })();
 
-            // Volume control
-            volumeSlider.addEventListener('input', function () {
-                bgMusic.volume = this.value / 100;
-                updateVolumeSlider();
-            });
-        })();
+    // 4. PHOTO SLIDESHOW
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const indicators = document.querySelectorAll('.slide-indicator');
 
-        // 3. PARALLAX SCROLLING
-        (function () {
-            const parallaxElements = document.querySelectorAll('.parallax-element');
+    function showSlide(n) {
+        if (n >= slides.length) currentSlide = 0;
+        if (n < 0) currentSlide = slides.length - 1;
 
-            window.addEventListener('scroll', function () {
-                const scrolled = window.pageYOffset;
-                parallaxElements.forEach((element, index) => {
-                    const speed = 0.5 + (index * 0.1);
-                    const yPos = -(scrolled * speed);
-                    element.style.transform = `translateY(${yPos}px)`;
-                });
-            });
-        })();
+        slides.forEach(slide => slide.style.opacity = '0');
+        indicators.forEach(indicator => {
+            indicator.style.background = 'rgba(255,255,255,0.5)';
+            indicator.style.transform = 'scale(1)';
+        });
 
-        // 4. PHOTO SLIDESHOW
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const indicators = document.querySelectorAll('.slide-indicator');
+        slides[currentSlide].style.opacity = '1';
+        indicators[currentSlide].style.background = 'white';
+        indicators[currentSlide].style.transform = 'scale(1.2)';
+    }
 
-        function showSlide(n) {
-            if (n >= slides.length) currentSlide = 0;
-            if (n < 0) currentSlide = slides.length - 1;
+    function changeSlide(n) {
+        currentSlide += n;
+        if (currentSlide >= slides.length) currentSlide = 0;
+        if (currentSlide < 0) currentSlide = slides.length - 1;
+        showSlide(currentSlide);
+    }
 
-            slides.forEach(slide => slide.style.opacity = '0');
-            indicators.forEach(indicator => {
-                indicator.style.background = 'rgba(255,255,255,0.5)';
-                indicator.style.transform = 'scale(1)';
-            });
+    function goToSlide(n) {
+        currentSlide = n;
+        showSlide(currentSlide);
+    }
 
-            slides[currentSlide].style.opacity = '1';
-            indicators[currentSlide].style.background = 'white';
-            indicators[currentSlide].style.transform = 'scale(1.2)';
-        }
+    // Auto-advance slideshow every 4 seconds
+    setInterval(() => changeSlide(1), 4000);
 
-        function changeSlide(n) {
-            currentSlide += n;
-            if (currentSlide >= slides.length) currentSlide = 0;
-            if (currentSlide < 0) currentSlide = slides.length - 1;
-            showSlide(currentSlide);
-        }
+    // 5. ADD TO CALENDAR BUTTON
+    document.getElementById('addToCalendar').addEventListener('click', function () {
+        const event = {
+            title: 'Nikini & Raveen Wedding',
+            description: 'Join us as we celebrate our special day!',
+            location: 'Hotel Royal Ramesses, 123 Celebration Avenue',
+            start: '20260131T180000',
+            end: '20260201T020000'
+        };
 
-        function goToSlide(n) {
-            currentSlide = n;
-            showSlide(currentSlide);
-        }
-
-        // Auto-advance slideshow every 4 seconds
-        setInterval(() => changeSlide(1), 4000);
-
-        // 5. ADD TO CALENDAR BUTTON
-        document.getElementById('addToCalendar').addEventListener('click', function () {
-            const event = {
-                title: 'Nikini & Raveen Wedding',
-                description: 'Join us as we celebrate our special day!',
-                location: 'Hotel Royal Ramesses, 123 Celebration Avenue',
-                start: '20260131T180000',
-                end: '20260201T020000'
-            };
-
-            const icsContent = `BEGIN:VCALENDAR
+        const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
 BEGIN:VEVENT
 DTSTART:${event.start}
@@ -2945,151 +3024,150 @@ LOCATION:${event.location}
 END:VEVENT
 END:VCALENDAR`;
 
-            const blob = new Blob([icsContent], { type: 'text/calendar' });
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'wedding-invitation.ics';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(url);
+        const blob = new Blob([icsContent], { type: 'text/calendar' });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'wedding-invitation.ics';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
 
-            // Show confirmation
-            this.textContent = '✓ Added to Calendar!';
+        // Show confirmation
+        this.textContent = '✓ Added to Calendar!';
+        setTimeout(() => {
+            this.textContent = '📅 Add to Calendar';
+        }, 2000);
+    });
+
+    // 6. EASTER EGGS
+    let clickCount = 0;
+    function triggerEasterEgg() {
+        clickCount++;
+        if (clickCount === 3) {
+            document.getElementById('secretMessage').classList.add('show');
+            createConfetti();
+            clickCount = 0;
+        }
+    }
+
+    document.getElementById('closeSecret').addEventListener('click', function () {
+        document.getElementById('secretMessage').classList.remove('show');
+    });
+
+    // Confetti effect
+    function createConfetti() {
+        const colors = ['#FF6B9D', '#FFA07A', '#667eea', '#f093fb', '#4facfe'];
+        for (let i = 0; i < 50; i++) {
             setTimeout(() => {
-                this.textContent = '📅 Add to Calendar';
-            }, 2000);
-        });
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti-burst';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-10px';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = '50%';
+                document.body.appendChild(confetti);
 
-        // 6. EASTER EGGS
-        let clickCount = 0;
-        function triggerEasterEgg() {
-            clickCount++;
-            if (clickCount === 3) {
-                document.getElementById('secretMessage').classList.add('show');
-                createConfetti();
-                clickCount = 0;
-            }
-        }
-
-        document.getElementById('closeSecret').addEventListener('click', function () {
-            document.getElementById('secretMessage').classList.remove('show');
-        });
-
-        // Confetti effect
-        function createConfetti() {
-            const colors = ['#FF6B9D', '#FFA07A', '#667eea', '#f093fb', '#4facfe'];
-            for (let i = 0; i < 50; i++) {
-                setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti-burst';
-                    confetti.style.left = Math.random() * 100 + '%';
-                    confetti.style.top = '-10px';
-                    confetti.style.width = '10px';
-                    confetti.style.height = '10px';
-                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.borderRadius = '50%';
-                    document.body.appendChild(confetti);
-
-                    const animation = confetti.animate([
-                        { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
-                        { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
-                    ], {
-                        duration: 2000 + Math.random() * 1000,
-                        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-                    });
-
-                    animation.onfinish = () => confetti.remove();
-                }, i * 30);
-            }
-        }
-
-        // Hidden Easter Egg on Footer Hearts
-        const footerHearts = document.querySelector('.footer-hearts');
-        if (footerHearts) {
-            let heartClicks = 0;
-            footerHearts.addEventListener('click', function () {
-                heartClicks++;
-                if (heartClicks === 5) {
-                    alert('💕 We love you too! Thanks for being part of our journey! 💕');
-                    heartClicks = 0;
-                }
-            });
-        }
-
-        // 7. GUEST ANALYTICS & ATTENDANCE TRACKING
-        (function () {
-            const sessionId = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
-            const pageViewData = {
-                sessionId: sessionId,
-                timestamp: new Date().toISOString(),
-                userAgent: navigator.userAgent,
-                referrer: document.referrer,
-                screenSize: `${window.screen.width}x${window.screen.height}`,
-                guestName: new URLSearchParams(window.location.search).get('guest') || 'Anonymous'
-            };
-
-            // Log to console (in production, send to analytics service)
-            console.log('📊 Guest Analytics:', pageViewData);
-
-            // Track time spent on page
-            let timeOnPage = 0;
-            setInterval(() => {
-                timeOnPage++;
-                if (timeOnPage % 30 === 0) { // Log every 30 seconds
-                    console.log(`⏱️ Time on page: ${timeOnPage} seconds`);
-                }
-            }, 1000);
-
-            // Track scroll depth
-            let maxScrollDepth = 0;
-            window.addEventListener('scroll', function () {
-                const scrollPercentage = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-                if (scrollPercentage > maxScrollDepth) {
-                    maxScrollDepth = Math.round(scrollPercentage);
-                    if (maxScrollDepth % 25 === 0) {
-                        console.log(`📜 Scroll depth: ${maxScrollDepth}%`);
-                    }
-                }
-            });
-
-            // Track section views
-            const sections = document.querySelectorAll('section[id]');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        console.log(`👀 Viewed section: ${entry.target.id}`);
-                    }
+                const animation = confetti.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                    { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+                ], {
+                    duration: 2000 + Math.random() * 1000,
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
                 });
-            }, { threshold: 0.5 });
 
-            sections.forEach(section => observer.observe(section));
+                animation.onfinish = () => confetti.remove();
+            }, i * 30);
+        }
+    }
 
-            // Store visit data in localStorage
-            const visits = JSON.parse(localStorage.getItem('weddingVisits') || '[]');
-            visits.push({
-                timestamp: new Date().toISOString(),
-                guestName: pageViewData.guestName
-            });
-            localStorage.setItem('weddingVisits', JSON.stringify(visits));
-            console.log(`📈 Total visits: ${visits.length}`);
-        })();
+    // Hidden Easter Egg on Footer Hearts
+    const footerHearts = document.querySelector('.footer-hearts');
+    if (footerHearts) {
+        let heartClicks = 0;
+        footerHearts.addEventListener('click', function () {
+            heartClicks++;
+            if (heartClicks === 5) {
+                alert('💕 We love you too! Thanks for being part of our journey! 💕');
+                heartClicks = 0;
+            }
+        });
+    }
 
-        // 8. SMOOTH SCROLL FOR NAVIGATION
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // 7. GUEST ANALYTICS & ATTENDANCE TRACKING
+    (function () {
+        const sessionId = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+        const pageViewData = {
+            sessionId: sessionId,
+            timestamp: new Date().toISOString(),
+            userAgent: navigator.userAgent,
+            referrer: document.referrer,
+            screenSize: `${window.screen.width}x${window.screen.height}`,
+            guestName: new URLSearchParams(window.location.search).get('guest') || 'Anonymous'
+        };
+
+        // Log to console (in production, send to analytics service)
+        console.log('📊 Guest Analytics:', pageViewData);
+
+        // Track time spent on page
+        let timeOnPage = 0;
+        setInterval(() => {
+            timeOnPage++;
+            if (timeOnPage % 30 === 0) { // Log every 30 seconds
+                console.log(`⏱️ Time on page: ${timeOnPage} seconds`);
+            }
+        }, 1000);
+
+        // Track scroll depth
+        let maxScrollDepth = 0;
+        window.addEventListener('scroll', function () {
+            const scrollPercentage = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            if (scrollPercentage > maxScrollDepth) {
+                maxScrollDepth = Math.round(scrollPercentage);
+                if (maxScrollDepth % 25 === 0) {
+                    console.log(`📜 Scroll depth: ${maxScrollDepth}%`);
+                }
+            }
+        });
+
+        // Track section views
+        const sections = document.querySelectorAll('section[id]');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    console.log(`👀 Viewed section: ${entry.target.id}`);
                 }
             });
-        });
-    </script>
+        }, { threshold: 0.5 });
 
-    <script src="main.js"></script>
+        sections.forEach(section => observer.observe(section));
+
+        // Store visit data in localStorage
+        const visits = JSON.parse(localStorage.getItem('weddingVisits') || '[]');
+        visits.push({
+            timestamp: new Date().toISOString(),
+            guestName: pageViewData.guestName
+        });
+        localStorage.setItem('weddingVisits', JSON.stringify(visits));
+        console.log(`📈 Total visits: ${visits.length}`);
+    })();
+
+    // 8. SMOOTH SCROLL FOR NAVIGATION
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+
+<script src="main.js"></script>
 </body>
 
-</html>
 </html>
