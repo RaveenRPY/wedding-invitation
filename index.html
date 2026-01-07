@@ -1430,6 +1430,51 @@
             color: var(--text-dark);
         }
 
+        /* Photo Slideshow Styles */
+        .slideshow-container {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .slides-wrapper {
+            touch-action: pan-y pinch-zoom;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .slides-wrapper:active {
+            cursor: grabbing !important;
+        }
+
+        .slides-track {
+            will-change: transform;
+        }
+
+        .slides-track .slide {
+            user-select: none;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+        }
+
+        .slide-btn {
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .slide-btn:hover {
+            background: rgba(255, 255, 255, 1) !important;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .slide-btn:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
         /* Gallery Grid */
         .gallery-grid {
             display: grid;
@@ -2044,10 +2089,447 @@
             color: var(--primary-color);
             font-weight: 500;
         }
+
+        /* Elegant Curtain Reveal Intro Animation */
+        .intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 50%, #000000 100%);
+            overflow: hidden;
+            transition: opacity 1.2s ease, visibility 1.2s ease;
+        }
+
+        [data-theme="light"] .intro-overlay {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 50%, #151515 100%);
+        }
+
+        .intro-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* Curtain panels */
+        .curtain-left,
+        .curtain-right {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg,
+                rgba(135, 169, 107, 0.95) 0%,
+                rgba(107, 138, 90, 0.95) 50%,
+                rgba(87, 169, 107, 0.95) 100%);
+            box-shadow: inset -10px 0 30px rgba(0, 0, 0, 0.3);
+            transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 2;
+        }
+
+        .curtain-left {
+            left: 0;
+            transform-origin: left center;
+            border-right: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .curtain-right {
+            right: 0;
+            transform-origin: right center;
+            border-left: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .curtain-left.opening {
+            transform: translateX(-100%);
+        }
+
+        .curtain-right.opening {
+            transform: translateX(100%);
+        }
+
+        /* Center content - Elegant Design */
+        .intro-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 3;
+            opacity: 0;
+            transition: opacity 0.8s ease 0.5s;
+            width: 90%;
+            max-width: 700px;
+            padding: 3rem;
+        }
+
+        .intro-content.visible {
+            opacity: 1;
+        }
+
+        /* Decorative divider */
+        .intro-divider {
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.5) 20%,
+                rgba(255, 255, 255, 0.8) 50%,
+                rgba(255, 255, 255, 0.5) 80%,
+                transparent 100%);
+            margin: 2rem auto;
+            position: relative;
+            animation: dividerFadeIn 1.2s ease 1.4s both;
+        }
+
+        .intro-divider::before,
+        .intro-divider::after {
+            content: '❦';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .intro-divider::before {
+            left: -30px;
+        }
+
+        .intro-divider::after {
+            right: -30px;
+        }
+
+        @keyframes dividerFadeIn {
+            from {
+                opacity: 0;
+                transform: scaleX(0);
+            }
+            to {
+                opacity: 1;
+                transform: scaleX(1);
+            }
+        }
+
+        /* Welcome text */
+        .intro-welcome {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.85);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            animation: textSlideUp 1s ease 0.6s both;
+        }
+
+        /* Main title */
+        .intro-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5.5rem;
+            color: #ffffff;
+            margin: 0.5rem 0;
+            text-shadow:
+                0 2px 10px rgba(135, 169, 107, 0.3),
+                0 4px 20px rgba(135, 169, 107, 0.2),
+                0 8px 30px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+            animation: titleFadeIn 1.2s ease 0.8s both;
+            position: relative;
+            display: inline-block;
+        }
+
+        .intro-title::before,
+        .intro-title::after {
+            content: '✨';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            opacity: 0.6;
+            animation: sparkleTwinkle 2s ease-in-out infinite;
+        }
+
+        .intro-title::before {
+            left: -50px;
+        }
+
+        .intro-title::after {
+            right: -50px;
+        }
+
+        @keyframes sparkleTwinkle {
+            0%, 100% {
+                opacity: 0.3;
+                transform: translateY(-50%) scale(0.8);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(-50%) scale(1.2);
+            }
+        }
+
+        /* Subtitle */
+        .intro-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 1.5rem 0 2.5rem;
+            font-weight: 300;
+            animation: textSlideUp 1s ease 1s both;
+            line-height: 1.6;
+        }
+
+        @keyframes textSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes titleFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Elegant button */
+        .intro-button {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #ffffff;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            padding: 16px 50px;
+            border-radius: 0;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: buttonFadeIn 1s ease 1.4s both;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            backdrop-filter: blur(10px);
+        }
+
+        .intro-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,
+                rgba(135, 169, 107, 0.3) 0%,
+                rgba(107, 138, 90, 0.3) 100%);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .intro-button::after {
+            content: '→';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes buttonFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .intro-button:hover {
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(135, 169, 107, 0.3);
+        }
+
+        .intro-button:hover::before {
+            left: 0;
+        }
+
+        .intro-button:hover::after {
+            opacity: 1;
+            right: 15px;
+        }
+
+        .intro-button:active {
+            transform: translateY(0);
+        }
+
+        /* Instruction text */
+        .intro-instruction {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 2rem;
+            letter-spacing: 1px;
+            animation: instructionFadeIn 1s ease 1.6s both;
+            font-weight: 300;
+        }
+
+        @keyframes instructionFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Floating particles */
+        .intro-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(0) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(-20px) translateX(10px) scale(1);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Blur effect for content behind */
+        body.intro-active {
+            overflow: hidden;
+        }
+
+        body.intro-active > *:not(.intro-overlay):not(script) {
+            filter: blur(10px);
+            transition: filter 0.6s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .intro-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .intro-welcome {
+                font-size: 1rem;
+                letter-spacing: 2px;
+            }
+
+            .intro-title {
+                font-size: 3.5rem;
+            }
+
+            .intro-title::before,
+            .intro-title::after {
+                font-size: 1rem;
+            }
+
+            .intro-title::before {
+                left: -35px;
+            }
+
+            .intro-title::after {
+                right: -35px;
+            }
+
+            .intro-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .intro-divider {
+                width: 80px;
+                margin: 1.5rem auto;
+            }
+
+            .intro-divider::before,
+            .intro-divider::after {
+                font-size: 1rem;
+            }
+
+            .intro-divider::before {
+                left: -25px;
+            }
+
+            .intro-divider::after {
+                right: -25px;
+            }
+
+            .intro-button {
+                font-size: 0.9rem;
+                padding: 14px 40px;
+                letter-spacing: 2px;
+            }
+
+            .intro-instruction {
+                font-size: 0.75rem;
+                margin-top: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .intro-title {
+                font-size: 2.8rem;
+            }
+
+            .intro-title::before,
+            .intro-title::after {
+                display: none;
+            }
+        }
     </style>
 </head>
 
-<body>
+<body class="intro-active">
+<!-- Elegant Curtain Reveal Intro -->
+<div class="intro-overlay" id="introOverlay">
+    <!-- Curtain Panels -->
+    <div class="curtain-left" id="curtainLeft"></div>
+    <div class="curtain-right" id="curtainRight"></div>
+
+    <!-- Center Content -->
+    <div class="intro-content" id="introContent">
+        <p class="intro-welcome">We Request the Pleasure of Your Company</p>
+        <div class="intro-divider"></div>
+        <h1 class="intro-title">Nikini & Raveen</h1>
+        <p class="intro-subtitle">As we unite our hearts in marriage</p>
+        <div class="intro-divider"></div>
+        <button class="intro-button" id="introButton">View Invitation</button>
+        <p class="intro-instruction">Click anywhere to begin</p>
+    </div>
+</div>
 <!-- Dark Mode Toggle Button -->
 <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
     <span class="theme-icon moon">🌙</span>
@@ -2061,27 +2543,30 @@
         <span class="music-icon paused" style="display:none;">🔇</span>
     </button>
     <div class="music-info">
-        <span class="music-text" id="musicText">Romantic Piano</span>
+        <span class="music-text" id="musicText">Wedding Love Song</span>
         <span class="music-status" id="musicStatus">Ready to play</span>
     </div>
     <div class="volume-control">
         <span class="volume-icon">🔉</span>
         <input type="range" min="0" max="100" value="70" class="volume-slider" id="volumeSlider" aria-label="Volume control">
     </div>
-    <audio id="bgMusic" loop preload="auto" crossorigin="anonymous" autoplay>
-        <!-- Multiple romantic music sources for reliability -->
+    <audio id="bgMusic" loop preload="auto" crossorigin="anonymous" autoplay muted playsinline webkit-playsinline>
+        <!-- Multiple romantic wedding music sources for reliability -->
 
-        <!-- Romantic Piano - Beautiful Wedding Instrumental -->
-        <source src="https://cdn.pixabay.com/audio/2022/03/24/audio_4a5b1a9478.mp3" type="audio/mpeg">
-
-        <!-- Backup Source 1: Peaceful Piano -->
-        <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
-
-        <!-- Backup Source 2: Romantic Love Piano -->
+        <!-- Main Source: Beautiful Wedding Love Song - Romantic Instrumental -->
         <source src="https://cdn.pixabay.com/audio/2023/02/28/audio_a53c49220e.mp3" type="audio/mpeg">
 
-        <!-- Backup Source 3: Beautiful Dream -->
+        <!-- Backup Source 1: Romantic Wedding Piano Ballad -->
+        <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+
+        <!-- Backup Source 2: Lovely Wedding Ceremony Music -->
+        <source src="https://cdn.pixabay.com/audio/2022/03/24/audio_4a5b1a9478.mp3" type="audio/mpeg">
+
+        <!-- Backup Source 3: Romantic Love Piano - Wedding Style -->
         <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_91b0e7d6b6.mp3" type="audio/mpeg">
+
+        <!-- Backup Source 4: Peaceful Wedding Instrumental -->
+        <source src="https://cdn.pixabay.com/audio/2021/12/08/audio_8c8b4e0e0a.mp3" type="audio/mpeg">
 
         <!--
         ═══════════════════════════════════════════════════════════════
@@ -2405,37 +2890,34 @@
         <div class="ornament">📷</div>
 
         <!-- Photo Slideshow -->
-        <div
-                style="position: relative; max-width: 800px; margin: 2rem auto; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px var(--shadow-color);">
-            <div id="photoSlideshow" style="position: relative; height: 500px;">
+        <div class="slideshow-container"
+             style="position: relative; max-width: 800px; margin: 2rem auto; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px var(--shadow-color); touch-action: pan-y pinch-zoom;">
+            <div id="photoSlideshow" class="slides-wrapper" style="position: relative; height: 500px; overflow: hidden; cursor: grab;">
                 <!-- Photo Slideshow using assets images -->
-                <div class="slide active"
-                     style="position: absolute; width: 100%; height: 100%; opacity: 1; transition: opacity 0.5s ease;">
-                    <img src="assets/01.webp" alt="Gallery Image 1" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                </div>
-                <div class="slide"
-                     style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease;">
-                    <img src="assets/02.webp" alt="Gallery Image 2" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                </div>
-                <div class="slide"
-                     style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease;">
-                    <img src="assets/03.webp" alt="Gallery Image 3" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                </div>
-                <div class="slide"
-                     style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease;">
-                    <img src="assets/04.webp" alt="Gallery Image 4" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                </div>
-                <div class="slide"
-                     style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease;">
-                    <img src="assets/05.webp" alt="Gallery Image 5" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div class="slides-track" id="slidesTrack" style="display: flex; height: 100%; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+                    <div class="slide" style="min-width: 100%; width: 100%; height: 100%; flex-shrink: 0;">
+                        <img src="assets/01.webp" alt="Gallery Image 1" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; user-select: none;">
+                    </div>
+                    <div class="slide" style="min-width: 100%; width: 100%; height: 100%; flex-shrink: 0;">
+                        <img src="assets/02.webp" alt="Gallery Image 2" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; user-select: none;">
+                    </div>
+                    <div class="slide" style="min-width: 100%; width: 100%; height: 100%; flex-shrink: 0;">
+                        <img src="assets/03.webp" alt="Gallery Image 3" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; user-select: none;">
+                    </div>
+                    <div class="slide" style="min-width: 100%; width: 100%; height: 100%; flex-shrink: 0;">
+                        <img src="assets/04.webp" alt="Gallery Image 4" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; user-select: none;">
+                    </div>
+                    <div class="slide" style="min-width: 100%; width: 100%; height: 100%; flex-shrink: 0;">
+                        <img src="assets/05.webp" alt="Gallery Image 5" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; user-select: none;">
+                    </div>
                 </div>
             </div>
 
             <!-- Slideshow Controls -->
-            <button onclick="changeSlide(-1)"
-                    style="position: absolute; top: 50%; left: 20px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.5rem; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: all 0.3s ease;">❮</button>
-            <button onclick="changeSlide(1)"
-                    style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.5rem; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: all 0.3s ease;">❯</button>
+            <button class="slide-btn prev-btn" onclick="changeSlide(-1)"
+                    style="position: absolute; top: 50%; left: 20px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.5rem; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: all 0.3s ease; z-index: 10;">❮</button>
+            <button class="slide-btn next-btn" onclick="changeSlide(1)"
+                    style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.5rem; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: all 0.3s ease; z-index: 10;">❯</button>
 
             <!-- Slide Indicators -->
             <div
@@ -2521,6 +3003,103 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+
+<!-- Elegant Curtain Reveal Intro Script -->
+<script>
+    (function() {
+        const introOverlay = document.getElementById('introOverlay');
+        const curtainLeft = document.getElementById('curtainLeft');
+        const curtainRight = document.getElementById('curtainRight');
+        const introContent = document.getElementById('introContent');
+        const introButton = document.getElementById('introButton');
+        const body = document.body;
+        let isOpening = false;
+
+        // Create floating particles
+        function createParticles() {
+            const particleCount = 15;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'intro-particle';
+
+                const left = Math.random() * 100;
+                const delay = Math.random() * 3;
+                const duration = 6 + Math.random() * 4;
+
+                particle.style.left = left + '%';
+                particle.style.bottom = '-10px';
+                particle.style.animationDelay = delay + 's';
+                particle.style.animationDuration = duration + 's';
+
+                introOverlay.appendChild(particle);
+            }
+        }
+
+        // Show content after a brief delay
+        setTimeout(() => {
+            introContent.classList.add('visible');
+        }, 300);
+
+        function openIntro() {
+            if (isOpening) return;
+            isOpening = true;
+
+            // Open curtains
+            curtainLeft.classList.add('opening');
+            curtainRight.classList.add('opening');
+
+            // Fade out content
+            introContent.style.opacity = '0';
+            introContent.style.transition = 'opacity 0.5s ease';
+
+            // Remove blur and hide intro after animation
+            setTimeout(() => {
+                introOverlay.classList.add('hidden');
+
+                // Remove blur from body
+                setTimeout(() => {
+                    body.classList.remove('intro-active');
+                }, 300);
+
+                // Trigger fake click for audio after intro opens
+                setTimeout(() => {
+                    if (typeof triggerFakeClick === 'function') {
+                        triggerFakeClick();
+                    }
+                }, 500);
+            }, 1600);
+        }
+
+        // Button click
+        introButton.addEventListener('click', openIntro);
+
+        // Click anywhere on overlay
+        introOverlay.addEventListener('click', function(e) {
+            if (e.target === introOverlay || e.target === curtainLeft || e.target === curtainRight) {
+                openIntro();
+            }
+        });
+
+        // Touch support
+        introOverlay.addEventListener('touchstart', function(e) {
+            if (e.target === introOverlay || e.target === curtainLeft || e.target === curtainRight) {
+                e.preventDefault();
+                openIntro();
+            }
+        }, { passive: false });
+
+        // Keyboard support
+        document.addEventListener('keydown', function(e) {
+            if ((e.key === 'Enter' || e.key === ' ') && !introOverlay.classList.contains('hidden')) {
+                e.preventDefault();
+                openIntro();
+            }
+        });
+
+        // Create particles
+        createParticles();
+    })();
+</script>
 
 <!-- Dark Mode Script -->
 <script>
@@ -2634,11 +3213,192 @@
         // Set initial volume and ensure audio is ready
         bgMusic.volume = 0.7;
 
+        // iOS-specific setup (required for iOS autoplay)
+        bgMusic.setAttribute('playsinline', 'true');
+        bgMusic.setAttribute('webkit-playsinline', 'true');
+
+        // Detect iOS devices
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        const isIOSChrome = /CriOS/.test(navigator.userAgent);
+        const isIOSSafari = isIOS && !isIOSChrome;
+
         // Strategy: Start muted (browsers allow muted autoplay), then unmute once playing
         bgMusic.muted = true; // Start muted to bypass autoplay restrictions
 
         // Try to load and play immediately
         bgMusic.load(); // Force reload to ensure it's ready
+
+        // iOS-specific: Preload audio more aggressively
+        if (isIOS) {
+            bgMusic.preload = 'auto';
+            console.log('📱 iOS device detected - using aggressive autoplay strategy');
+        }
+
+        // Advanced technique: Use Web Audio API to unlock audio context
+        // This sometimes helps bypass iOS restrictions
+        let audioContextUnlocked = false;
+        let audioContext = null;
+
+        function unlockAudioContext() {
+            if (audioContextUnlocked) return;
+
+            try {
+                // Create a silent audio context to unlock audio
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (AudioContext) {
+                    audioContext = new AudioContext();
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    gainNode.gain.setValueAtTime(0, audioContext.currentTime); // Silent
+                    oscillator.start(0);
+                    oscillator.stop(0.001);
+
+                    // Resume audio context (required for iOS)
+                    if (audioContext.state === 'suspended') {
+                        audioContext.resume().then(() => {
+                            audioContextUnlocked = true;
+                            console.log('🔓 Audio context unlocked');
+                        });
+                    } else {
+                        audioContextUnlocked = true;
+                        console.log('🔓 Audio context unlocked');
+                    }
+                }
+            } catch (e) {
+                console.log('Audio context unlock failed:', e);
+            }
+        }
+
+        // Try to unlock audio context immediately
+        unlockAudioContext();
+
+        // Also try on visibility change (when page becomes visible)
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                unlockAudioContext();
+                // Also try to resume if suspended
+                if (audioContext && audioContext.state === 'suspended') {
+                    audioContext.resume();
+                }
+            }
+        });
+
+        // AGGRESSIVE TECHNIQUE: Create a hidden button and programmatically "click" it
+        // This simulates user interaction for iOS
+        function simulateUserInteraction() {
+            try {
+                // Create a temporary invisible button
+                const fakeButton = document.createElement('button');
+                fakeButton.style.position = 'absolute';
+                fakeButton.style.left = '-9999px';
+                fakeButton.style.opacity = '0';
+                fakeButton.style.pointerEvents = 'none';
+                fakeButton.setAttribute('aria-hidden', 'true');
+                document.body.appendChild(fakeButton);
+
+                // Try to trigger a click event (may not work on iOS but worth trying)
+                fakeButton.click();
+
+                // Remove after a moment
+        setTimeout(() => {
+                    if (fakeButton.parentNode) {
+                        fakeButton.parentNode.removeChild(fakeButton);
+                    }
+                }, 100);
+            } catch (e) {
+                // Silently fail
+            }
+        }
+
+        // FAKE CLICK ON SITE AFTER LOADED - Multiple techniques
+        function triggerFakeClick() {
+            try {
+                // Method 1: Click on document body
+                const clickEvent = new MouseEvent('click', {
+                    view: window,
+                    bubbles: true,
+                    cancelable: true,
+                    buttons: 1
+                });
+                document.body.dispatchEvent(clickEvent);
+
+                // Method 2: Click on document
+                document.dispatchEvent(clickEvent);
+
+                // Method 3: Click on a temporary element
+                const tempDiv = document.createElement('div');
+                tempDiv.style.position = 'absolute';
+                tempDiv.style.width = '1px';
+                tempDiv.style.height = '1px';
+                tempDiv.style.left = '0';
+                tempDiv.style.top = '0';
+                tempDiv.style.opacity = '0';
+                tempDiv.style.pointerEvents = 'none';
+                document.body.appendChild(tempDiv);
+
+                // Trigger multiple click events
+                tempDiv.click();
+                tempDiv.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+                tempDiv.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+                tempDiv.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+
+                // Also try touch events for mobile
+                if ('ontouchstart' in window) {
+                    tempDiv.dispatchEvent(new TouchEvent('touchstart', { bubbles: true, cancelable: true }));
+                    tempDiv.dispatchEvent(new TouchEvent('touchend', { bubbles: true, cancelable: true }));
+                }
+
+                // Remove after a moment
+                setTimeout(() => {
+                    if (tempDiv.parentNode) {
+                        tempDiv.parentNode.removeChild(tempDiv);
+                    }
+                }, 200);
+
+                console.log('🖱️ Fake click triggered');
+            } catch (e) {
+                console.log('Fake click failed:', e);
+            }
+        }
+
+        // Try simulating user interaction immediately
+        simulateUserInteraction();
+
+        // Trigger fake click after page loads
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(() => {
+                    triggerFakeClick();
+                    simulateUserInteraction();
+                }, 100);
+            });
+        } else {
+            setTimeout(() => {
+                triggerFakeClick();
+                simulateUserInteraction();
+            }, 100);
+        }
+
+        // Also trigger on window load
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                triggerFakeClick();
+                simulateUserInteraction();
+            }, 200);
+        });
+
+        // Trigger fake click when page becomes visible
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                setTimeout(() => {
+                    triggerFakeClick();
+                    simulateUserInteraction();
+                }, 100);
+            }
+        });
 
         // Update volume slider background
         function updateVolumeSlider() {
@@ -2651,7 +3411,7 @@
         function updatePlayingUI() {
             playingIcon.style.display = 'inline';
             pausedIcon.style.display = 'none';
-            musicText.textContent = 'Romantic Piano';
+            musicText.textContent = 'Wedding Love Song';
             musicStatus.textContent = 'Now Playing ♫';
             musicToggle.classList.add('playing');
             isPlaying = true;
@@ -2659,9 +3419,9 @@
 
         // Function to update UI when paused
         function updatePausedUI() {
-            playingIcon.style.display = 'none';
-            pausedIcon.style.display = 'inline';
-            musicText.textContent = 'Romantic Piano';
+                playingIcon.style.display = 'none';
+                pausedIcon.style.display = 'inline';
+            musicText.textContent = 'Wedding Love Song';
             musicStatus.textContent = 'Paused';
             musicToggle.classList.remove('playing');
             isPlaying = false;
@@ -2669,7 +3429,7 @@
 
         // Auto-play on page load - try muted first, then unmute
         function attemptAutoPlay(forceUnmute = false) {
-            // Try muted first (browsers allow muted autoplay)
+            // Always try muted first for autoplay (works better)
             if (!forceUnmute) {
                 bgMusic.muted = true;
             } else {
@@ -2678,56 +3438,99 @@
 
             bgMusic.volume = 0.7;
 
-            const playPromise = bgMusic.play();
+            // iOS-specific: Ensure playsinline is set
+            if (isIOS) {
+                bgMusic.setAttribute('playsinline', 'true');
+                bgMusic.setAttribute('webkit-playsinline', 'true');
+            }
 
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    // If we started muted, unmute it now
+            // Try to unlock audio context before playing
+            unlockAudioContext();
+
+            // Try to resume audio context if suspended
+            if (audioContext && audioContext.state === 'suspended') {
+                audioContext.resume();
+            }
+
+            // AGGRESSIVE: Try multiple play methods
+            let playAttempted = false;
+
+            // Method 1: Standard play() with promise
+                const playPromise = bgMusic.play();
+
+                if (playPromise !== undefined) {
+                playAttempted = true;
+                    playPromise.then(() => {
+                    // If we started muted, unmute it now (with delay for iOS)
                     if (bgMusic.muted) {
+                        const unmuteDelay = isIOS ? 500 : 200;
                         setTimeout(() => {
                             bgMusic.muted = false;
                             console.log('🔊 Unmuted after autoplay');
-                        }, 100);
+                        }, unmuteDelay);
                     }
                     updatePlayingUI();
                     console.log('▶️ Music auto-playing! 🎵');
                     // Widget stays collapsed when auto-playing
-                }).catch(error => {
-                    console.log('⚠️ Autoplay prevented by browser:', error);
-                    // Try again with muted if unmuted failed
-                    if (!bgMusic.muted && !forceUnmute) {
-                        setTimeout(() => attemptAutoPlay(false), 100);
-                    } else {
-                        musicStatus.textContent = 'Click to play';
-                    }
+                    }).catch(error => {
+                        console.log('⚠️ Autoplay prevented:', error);
+                    // Try alternative method
+                    tryAlternativePlay();
                 });
-            } else {
-                // Fallback for older browsers
-                try {
-                    bgMusic.play();
-                    if (bgMusic.muted) {
+            }
+
+            // Method 2: Direct play() without promise (fallback)
+            if (!playAttempted) {
+                tryAlternativePlay();
+            }
+        }
+
+        // Alternative play method
+        function tryAlternativePlay() {
+            try {
+                // Try direct play
+                bgMusic.play();
+
+                // Check if actually playing after a moment
                         setTimeout(() => {
-                            bgMusic.muted = false;
-                        }, 100);
+                    if (!bgMusic.paused && !isPlaying) {
+                        if (bgMusic.muted) {
+                            const unmuteDelay = isIOS ? 500 : 200;
+                            setTimeout(() => {
+                                bgMusic.muted = false;
+                            }, unmuteDelay);
+                        }
+                        updatePlayingUI();
+                        console.log('▶️ Music playing (alternative method)! 🎵');
+                    } else if (!isPlaying) {
+                        // Still not playing, keep trying
+                        setTimeout(() => attemptAutoPlay(false), 1000);
                     }
-                    updatePlayingUI();
-                    console.log('▶️ Music playing (fallback)! 🎵');
-                } catch (e) {
-                    console.log('⚠️ Play failed:', e);
-                }
+                }, 100);
+            } catch (e) {
+                console.log('⚠️ Alternative play failed:', e);
+                // Keep trying with longer intervals
+                setTimeout(() => attemptAutoPlay(false), 2000);
             }
         }
 
         // IMMEDIATE play attempt - try right now as soon as functions are defined
+        // For iOS, we'll try muted autoplay which is more likely to work
         (function immediatePlay() {
             try {
+                // Set muted for iOS autoplay
+                if (isIOS) {
+                    bgMusic.muted = true;
+                }
+
                 if (bgMusic.readyState >= 1) { // HAVE_METADATA or higher
                     bgMusic.play().then(() => {
                         console.log('🎵 Immediate play succeeded!');
+                        // Unmute after a delay
                         setTimeout(() => {
                             bgMusic.muted = false;
                             updatePlayingUI();
-                        }, 50);
+                        }, isIOS ? 300 : 50);
                     }).catch(() => {
                         // Will try again with other methods
                     });
@@ -2738,21 +3541,33 @@
         })();
 
         // Immediate attempt to play (before any events) - multiple attempts
-        setTimeout(() => {
-            attemptAutoPlay();
-        }, 0);
+        // Try muted first (works better for autoplay)
+        // VERY AGGRESSIVE: Multiple immediate attempts with user interaction simulation
+        const immediateAttempts = [0, 10, 20, 30, 50, 75, 100, 150, 200, 300, 500];
+        immediateAttempts.forEach(delay => {
+            setTimeout(() => {
+                if (!isPlaying) {
+                    simulateUserInteraction();
+                    unlockAudioContext();
+                    attemptAutoPlay(false); // Try muted
+                }
+            }, delay);
+        });
 
-        setTimeout(() => {
-            if (!isPlaying && bgMusic.readyState >= 1) {
-                attemptAutoPlay();
-            }
-        }, 10);
-
-        setTimeout(() => {
-            if (!isPlaying && bgMusic.readyState >= 2) {
-                attemptAutoPlay();
-            }
-        }, 50);
+        // Additional attempts for iOS at longer intervals
+        if (isIOS) {
+            const iosAttempts = [800, 1200, 1500, 2000, 2500, 3000, 4000, 5000];
+            iosAttempts.forEach(delay => {
+                setTimeout(() => {
+                    if (!isPlaying) {
+                        triggerFakeClick(); // Trigger fake click
+                        simulateUserInteraction();
+                        unlockAudioContext();
+                        attemptAutoPlay(false); // Try muted
+                    }
+                }, delay);
+            });
+        }
 
         // Expand/collapse functions
         function expandPlayer() {
@@ -2810,12 +3625,12 @@
         volumeSlider.addEventListener('input', resetCollapseTimer);
 
         // Add loading event listeners - try multiple events for best compatibility
-        // Try on loadstart (very early)
+        // Try on loadstart (very early) - use muted for autoplay
         bgMusic.addEventListener('loadstart', function () {
             console.log('🎵 Audio load started');
-            setTimeout(() => {
+                setTimeout(() => {
                 if (!isPlaying) {
-                    attemptAutoPlay();
+                    attemptAutoPlay(false); // Try muted
                 }
             }, 100);
         }, { once: true });
@@ -2823,27 +3638,37 @@
         bgMusic.addEventListener('canplay', function () {
             console.log('🎵 Audio can play');
             if (!isPlaying) {
-                attemptAutoPlay();
+                attemptAutoPlay(false); // Try muted
             }
         }, { once: true });
 
         bgMusic.addEventListener('canplaythrough', function () {
             console.log('🎵 Audio can play through');
             if (!isPlaying) {
-                attemptAutoPlay();
+                attemptAutoPlay(false); // Try muted
             }
         }, { once: true });
 
         bgMusic.addEventListener('loadeddata', function () {
             console.log('✅ Music loaded successfully!');
-            musicText.textContent = 'Romantic Piano';
+            musicText.textContent = 'Wedding Love Song';
             musicStatus.textContent = 'Ready to play';
 
-            // Auto-play immediately when loaded
+            // Auto-play immediately when loaded - use muted for autoplay
             if (!isPlaying) {
-                attemptAutoPlay();
+                attemptAutoPlay(false); // Try muted
             }
         }, { once: true });
+
+        // iOS-specific: Try on loadedmetadata (earliest event)
+        if (isIOS) {
+            bgMusic.addEventListener('loadedmetadata', function () {
+                console.log('📱 iOS: Audio metadata loaded');
+                if (!isPlaying) {
+                    attemptAutoPlay(false); // Try muted
+                }
+            }, { once: true });
+        }
 
         bgMusic.addEventListener('error', function (e) {
             console.error('❌ Music loading error:', e);
@@ -2851,12 +3676,12 @@
             musicStatus.textContent = 'Error loading';
         });
 
-        // Try auto-play immediately when DOM is ready
+        // Try auto-play immediately when DOM is ready - use muted for autoplay
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             if (!isPlaying) {
-                        attemptAutoPlay();
+                        attemptAutoPlay(false); // Try muted
                     }
                 }, 50);
             });
@@ -2864,40 +3689,55 @@
             // DOM already loaded
             setTimeout(() => {
                 if (!isPlaying) {
-                    attemptAutoPlay();
+                    attemptAutoPlay(false); // Try muted
                 }
             }, 50);
         }
 
-        // Try auto-play when page is fully loaded
+        // Try auto-play when page is fully loaded - use muted for autoplay
         window.addEventListener('load', function() {
                 setTimeout(() => {
                 if (!isPlaying) {
-                    attemptAutoPlay();
+                    attemptAutoPlay(false); // Try muted
                 }
             }, 100);
         });
 
-        // Additional attempts at various intervals
+        // Additional attempts at various intervals - all muted for autoplay
         setTimeout(() => {
             if (!isPlaying) {
-                attemptAutoPlay();
+                attemptAutoPlay(false); // Try muted
             }
         }, 200);
 
         setTimeout(() => {
             if (!isPlaying) {
-                attemptAutoPlay();
+                attemptAutoPlay(false); // Try muted
             }
-        }, 500);
+                }, 500);
 
         setTimeout(() => {
             if (!isPlaying) {
-                attemptAutoPlay();
+                attemptAutoPlay(false); // Try muted
             }
         }, 1000);
 
-        // Try on ANY user interaction - be very aggressive
+        // Extra attempts for iOS at longer intervals
+        if (isIOS) {
+            setTimeout(() => {
+                if (!isPlaying) {
+                    attemptAutoPlay(false); // Try muted
+                }
+                }, 1500);
+
+            setTimeout(() => {
+                if (!isPlaying) {
+                    attemptAutoPlay(false); // Try muted
+                }
+            }, 2000);
+        }
+
+        // Try on ANY user interaction - be very aggressive, especially for iOS
         function tryAutoPlayOnInteraction() {
             if (!isPlaying) {
                 // Try unmuted on user interaction (user gesture allows unmuted play)
@@ -2905,23 +3745,79 @@
             }
         }
 
-        // Listen to multiple interaction events
-        document.addEventListener('click', tryAutoPlayOnInteraction);
-        document.addEventListener('touchstart', tryAutoPlayOnInteraction);
-        document.addEventListener('touchend', tryAutoPlayOnInteraction);
-        document.addEventListener('mousedown', tryAutoPlayOnInteraction);
-        document.addEventListener('scroll', tryAutoPlayOnInteraction);
-        document.addEventListener('keydown', tryAutoPlayOnInteraction);
-        document.addEventListener('pointerdown', tryAutoPlayOnInteraction);
-
-        // Also try on mouse movement (some browsers consider this interaction)
-        let mouseMoveAttempts = 0;
-        document.addEventListener('mousemove', function() {
-            if (!isPlaying && mouseMoveAttempts < 3) {
-                mouseMoveAttempts++;
-                tryAutoPlayOnInteraction();
+        // Keep trying autoplay even without user interaction
+        // Use Page Visibility API to try when page becomes visible
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden && !isPlaying) {
+                console.log('📄 Page visible - attempting autoplay');
+                unlockAudioContext();
+        setTimeout(() => {
+                    attemptAutoPlay(false);
+                }, 100);
             }
         });
+
+        // Use Intersection Observer to detect when page is in view
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !isPlaying) {
+                        console.log('👁️ Page in view - attempting autoplay');
+                        unlockAudioContext();
+                        attemptAutoPlay(false);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            observer.observe(document.body);
+        }
+
+        // iOS-specific: More aggressive touch event handling (as fallback)
+        if (isIOS) {
+            // iOS requires touch events - be very aggressive
+            document.addEventListener('touchstart', function(e) {
+            if (!isPlaying) {
+                    // Immediately try to play on first touch
+                    attemptAutoPlay(true);
+                }
+            }, { once: false, passive: true });
+
+            document.addEventListener('touchend', function(e) {
+                if (!isPlaying) {
+                    attemptAutoPlay(true);
+                }
+            }, { once: false, passive: true });
+
+            // Also try on tap/click
+            document.addEventListener('click', tryAutoPlayOnInteraction, { once: false });
+
+            // Try on scroll (iOS Safari allows this)
+            let scrollAttempts = 0;
+            document.addEventListener('scroll', function() {
+                if (!isPlaying && scrollAttempts < 2) {
+                    scrollAttempts++;
+                    attemptAutoPlay(true);
+                }
+            }, { passive: true });
+        } else {
+            // Non-iOS: Standard event listeners
+            document.addEventListener('click', tryAutoPlayOnInteraction);
+            document.addEventListener('touchstart', tryAutoPlayOnInteraction);
+            document.addEventListener('touchend', tryAutoPlayOnInteraction);
+            document.addEventListener('mousedown', tryAutoPlayOnInteraction);
+            document.addEventListener('scroll', tryAutoPlayOnInteraction);
+            document.addEventListener('keydown', tryAutoPlayOnInteraction);
+            document.addEventListener('pointerdown', tryAutoPlayOnInteraction);
+
+            // Also try on mouse movement (some browsers consider this interaction)
+            let mouseMoveAttempts = 0;
+            document.addEventListener('mousemove', function() {
+                if (!isPlaying && mouseMoveAttempts < 3) {
+                    mouseMoveAttempts++;
+                    tryAutoPlayOnInteraction();
+                }
+            });
+        }
 
         // Toggle play/pause
         musicToggle.addEventListener('click', function (e) {
@@ -2968,26 +3864,114 @@
         });
     })();
 
-    // 4. PHOTO SLIDESHOW
+    // 4. PHOTO SLIDESHOW with Touch/Swipe Support
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
     const indicators = document.querySelectorAll('.slide-indicator');
+    const slidesTrack = document.getElementById('slidesTrack');
+    const slideshowContainer = document.querySelector('.slideshow-container');
+    const slidesWrapper = document.getElementById('photoSlideshow');
 
+    let isDragging = false;
+    let startPos = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let animationID = 0;
+    let autoSlideInterval;
+
+    // Get position X
+    function getPositionX(event) {
+        return event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+    }
+
+    // Set slider position
+    function setSliderPosition() {
+        slidesTrack.style.transform = `translateX(${currentTranslate}px)`;
+    }
+
+    // Animation
+    function animation() {
+        setSliderPosition();
+        if (isDragging) requestAnimationFrame(animation);
+    }
+
+    // Touch/Mouse start
+    function touchStart(event) {
+        startPos = getPositionX(event);
+        isDragging = true;
+        animationID = requestAnimationFrame(animation);
+        slidesWrapper.style.cursor = 'grabbing';
+        slidesTrack.style.transition = 'none';
+
+        // Pause auto-slide
+        if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+        }
+    }
+
+    // Touch/Mouse move
+    function touchMove(event) {
+        if (!isDragging) return;
+        const currentPosition = getPositionX(event);
+        const moved = currentPosition - startPos;
+        currentTranslate = prevTranslate + moved;
+    }
+
+    // Touch/Mouse end
+    function touchEnd() {
+        if (!isDragging) return;
+        cancelAnimationFrame(animationID);
+        isDragging = false;
+        slidesWrapper.style.cursor = 'grab';
+
+        const movedBy = currentTranslate - prevTranslate;
+        const slideWidth = slideshowContainer.offsetWidth;
+
+        if (movedBy < -slideWidth / 4 && currentSlide < slides.length - 1) {
+            currentSlide++;
+        }
+        if (movedBy > slideWidth / 4 && currentSlide > 0) {
+            currentSlide--;
+        }
+
+        setPositionByIndex();
+        prevTranslate = currentTranslate;
+        slidesTrack.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+
+        // Resume auto-slide
+        startAutoSlide();
+    }
+
+    // Set position by slide index
+    function setPositionByIndex() {
+        const slideWidth = slideshowContainer.offsetWidth;
+        currentTranslate = currentSlide * -slideWidth;
+        prevTranslate = currentTranslate;
+        setSliderPosition();
+        updateIndicators();
+    }
+
+    // Update indicators
+    function updateIndicators() {
+        indicators.forEach((indicator, index) => {
+            if (index === currentSlide) {
+                indicator.style.background = 'white';
+                indicator.style.transform = 'scale(1.2)';
+            } else {
+                indicator.style.background = 'rgba(255,255,255,0.5)';
+                indicator.style.transform = 'scale(1)';
+            }
+        });
+    }
+
+    // Show slide function
     function showSlide(n) {
         if (n >= slides.length) currentSlide = 0;
         if (n < 0) currentSlide = slides.length - 1;
-
-        slides.forEach(slide => slide.style.opacity = '0');
-        indicators.forEach(indicator => {
-            indicator.style.background = 'rgba(255,255,255,0.5)';
-            indicator.style.transform = 'scale(1)';
-        });
-
-        slides[currentSlide].style.opacity = '1';
-        indicators[currentSlide].style.background = 'white';
-        indicators[currentSlide].style.transform = 'scale(1.2)';
+        setPositionByIndex();
     }
 
+    // Change slide function
     function changeSlide(n) {
         currentSlide += n;
         if (currentSlide >= slides.length) currentSlide = 0;
@@ -2995,13 +3979,52 @@
         showSlide(currentSlide);
     }
 
+    // Go to slide function
     function goToSlide(n) {
         currentSlide = n;
         showSlide(currentSlide);
     }
 
-    // Auto-advance slideshow every 4 seconds
-    setInterval(() => changeSlide(1), 4000);
+    // Auto-advance slideshow
+    function startAutoSlide() {
+        if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+        }
+        autoSlideInterval = setInterval(() => {
+            if (!isDragging) {
+                changeSlide(1);
+            }
+        }, 4000);
+    }
+
+    // Initialize touch events
+    slidesWrapper.addEventListener('touchstart', touchStart, { passive: true });
+    slidesWrapper.addEventListener('touchmove', touchMove, { passive: true });
+    slidesWrapper.addEventListener('touchend', touchEnd, { passive: true });
+
+    // Initialize mouse events
+    slidesWrapper.addEventListener('mousedown', touchStart);
+    slidesWrapper.addEventListener('mousemove', touchMove);
+    slidesWrapper.addEventListener('mouseup', touchEnd);
+    slidesWrapper.addEventListener('mouseleave', touchEnd);
+
+    // Prevent image drag
+    slides.forEach(slide => {
+        slide.addEventListener('dragstart', (e) => e.preventDefault());
+    });
+
+    // Initialize
+    setPositionByIndex();
+    startAutoSlide();
+
+    // Handle window resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            setPositionByIndex();
+        }, 250);
+    });
 
     // 5. ADD TO CALENDAR BUTTON
     document.getElementById('addToCalendar').addEventListener('click', function () {
