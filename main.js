@@ -357,14 +357,33 @@ async function submitRSVP(status) {
     const urlParams = new URLSearchParams(window.location.search);
     const guestName = urlParams.get('name') || "Guest";
     
+    // Get buttons and wrapper
+    const buttons = document.querySelectorAll('.rsvp-emoji-btn');
+    const wrapper = document.querySelector('.rsvp-options-wrapper');
+
+    // Show loading state
     statusText.style.marginTop = "20px";
-    statusText.innerText = "Sending...";
+    statusText.innerHTML = "⏳ Sending your response...";
+    statusText.style.color = "var(--primary-color)";
+
+    // Disable buttons to prevent double submission
+    buttons.forEach(btn => {
+        btn.disabled = true;
+        btn.style.cursor = 'not-allowed';
+        btn.style.opacity = '0.6';
+    });
+    if (wrapper) wrapper.style.opacity = "0.6";
 
     try {
-        // We use the 'no-cors' mode to ignore the 302 redirect error
-        await fetch(scriptURL, {
+        // Google Apps Script works best with 'no-cors' mode
+        // Use a timeout to detect if request actually fails
+        const timeoutPromise = new Promise((_, reject) =>
+            setTimeout(() => reject(new Error('Request timeout')), 10000)
+        );
+
+        const fetchPromise = fetch(scriptURL, {
             method: 'POST',
-            mode: 'no-cors', 
+            mode: 'no-cors', // Directly use no-cors to avoid failed CORS request
             cache: 'no-cache',
             headers: {
                 'Content-Type': 'application/json',
@@ -372,23 +391,38 @@ async function submitRSVP(status) {
             body: JSON.stringify({ name: guestName, status: status })
         });
 
-        // Since 'no-cors' doesn't let us read the response, 
-        // we assume success if the fetch command finishes.
+        // Wait for fetch or timeout
+        await Promise.race([fetchPromise, timeoutPromise]);
+
+        // Since no-cors mode doesn't allow reading response,
+        // we assume success if the request completes without error
         statusText.innerHTML = `✨ Thank you, ${guestName}! <br> Your status: <strong>${status}</strong>`;
-        
-        // Optional: Disable buttons
-        document.querySelectorAll('.rsvp-emoji-btn').forEach(btn => btn.disabled = true);
-        document.querySelector('.rsvp-options-wrapper').style.opacity = "0.4";
+        statusText.style.color = "var(--primary-color)";
+        console.log('RSVP submitted successfully');
+
+        // Keep buttons disabled after successful submission
+        if (wrapper) wrapper.style.opacity = "0.4";
 
     } catch (error) {
-        console.error('Error:', error);
-        statusText.innerText = "Connection error. Please try again.";
+        // Show error message only if request actually fails
+        statusText.innerHTML = "❌ Failed to send your response. Please try again.";
+        statusText.style.color = "#d9534f";
+        console.error('RSVP submission error:', error);
+
+        // Re-enable buttons on error so user can retry
+        buttons.forEach(btn => {
+            btn.disabled = false;
+            btn.style.cursor = 'pointer';
+            btn.style.opacity = '1';
+        });
+        if (wrapper) wrapper.style.opacity = "1";
     }
 }
 
 // Make functions available globally
 window.handleRSVP = handleRSVP;
 window.openMap = openMap;
+window.submitRSVP = submitRSVP;
 
 // --- 10. Add Scroll Animations for New Sections ---
 gsap.utils.toArray('.countdown-box').forEach((box, index) => {
