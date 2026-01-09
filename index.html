@@ -178,6 +178,144 @@
             font-variant-numeric: lining-nums;
         }
 
+        /* Scroll Down Hint - Text & Double Arrows */
+        .scroll-hint {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            opacity: 0;
+            animation: fadeInScrollHint 2s ease-out 1.5s forwards;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .scroll-hint.hidden {
+            opacity: 0;
+            animation: fadeOutScrollHint 0.6s ease-out forwards;
+        }
+
+        .scroll-hint-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--secondary-color);
+            opacity: 0.8;
+            font-weight: 300;
+            animation: pulseText 3s ease-in-out infinite;
+        }
+
+        .scroll-hint-arrows {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .scroll-hint-arrow {
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 12px solid var(--primary-color);
+            position: relative;
+            opacity: 0.85;
+        }
+
+        .scroll-hint-arrow::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 9px solid rgba(255, 255, 255, 0.3);
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .scroll-hint-arrow:first-child {
+            animation: bounceArrow1 2s ease-in-out infinite;
+            opacity: 1;
+        }
+
+        .scroll-hint-arrow:last-child {
+            animation: bounceArrow2 2s ease-in-out infinite 0.3s;
+            opacity: 0.6;
+            border-top-color: var(--primary-color);
+        }
+
+        @keyframes fadeInScrollHint {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        @keyframes fadeOutScrollHint {
+            from {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(-50%) translateY(10px);
+            }
+        }
+
+        @keyframes pulseText {
+            0%, 100% {
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceArrow1 {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(10px) scale(1.1);
+                opacity: 0.9;
+            }
+        }
+
+        @keyframes bounceArrow2 {
+            0%, 100% {
+                transform: translateY(0) scale(0.9);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(12px) scale(1);
+                opacity: 0.85;
+            }
+        }
+
+        [data-theme="dark"] .scroll-hint-text {
+            color: rgba(184, 212, 160, 0.8);
+        }
+
+        [data-theme="dark"] .scroll-hint-arrow {
+            border-top-color: var(--primary-color);
+        }
+
+        [data-theme="dark"] .scroll-hint-arrow::before {
+            border-top-color: rgba(184, 212, 160, 0.2);
+        }
+
         /* Scroll Sections */
         .scroll-section {
             min-height: 100vh;
@@ -620,6 +758,34 @@
             .hero-divider {
                 width: 80px;
                 margin: 1.5rem auto;
+            }
+
+            /* Scroll Hint */
+            .scroll-hint {
+                bottom: 40px;
+                gap: 10px;
+            }
+
+            .scroll-hint-text {
+                font-size: 0.65rem;
+                letter-spacing: 2px;
+            }
+
+            .scroll-hint-arrows {
+                gap: 6px;
+            }
+
+            .scroll-hint-arrow {
+                border-left-width: 6px;
+                border-right-width: 6px;
+                border-top-width: 10px;
+            }
+
+            .scroll-hint-arrow::before {
+                border-left-width: 5px;
+                border-right-width: 5px;
+                border-top-width: 7px;
+                top: -10px;
             }
 
             /* Section Layout */
@@ -2620,6 +2786,13 @@
         <div class="hero-divider"></div>
         <p class="hero-subtitle">Request the honor of your presence</p>
         <p class="hero-subtitle" style="margin-top: 1rem;">at their wedding celebration</p>
+    </div>
+    <div class="scroll-hint" id="scrollHint">
+        <span class="scroll-hint-text">Scroll</span>
+        <div class="scroll-hint-arrows">
+            <div class="scroll-hint-arrow"></div>
+            <div class="scroll-hint-arrow"></div>
+        </div>
     </div>
 </section>
 

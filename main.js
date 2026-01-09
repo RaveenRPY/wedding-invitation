@@ -480,3 +480,69 @@ gsap.utils.toArray('.gallery-item').forEach((item, index) => {
     });
 });
 
+// --- 11. Scroll Down Hint Animation ---
+const scrollHint = document.getElementById('scrollHint');
+let scrollHintHidden = false;
+
+// Function to show scroll hint only after intro is revealed
+function showScrollHint() {
+    const introOverlay = document.getElementById('introOverlay');
+    if (scrollHint && introOverlay && introOverlay.classList.contains('hidden')) {
+        // Ensure scroll hint is visible (remove hidden class if present)
+        scrollHint.classList.remove('hidden');
+    }
+}
+
+// Check if intro is already hidden on page load
+if (scrollHint) {
+    const introOverlay = document.getElementById('introOverlay');
+    if (introOverlay && introOverlay.classList.contains('hidden')) {
+        // Intro already hidden, show hint immediately
+        showScrollHint();
+    } else {
+        // Wait for intro to be hidden, then show hint
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.target.classList.contains('hidden')) {
+                    setTimeout(showScrollHint, 500); // Small delay after intro hides
+                    observer.disconnect();
+                }
+            });
+        });
+        
+        if (introOverlay) {
+            observer.observe(introOverlay, {
+                attributes: true,
+                attributeFilter: ['class']
+            });
+        }
+    }
+}
+
+// Hide scroll hint when user scrolls
+window.addEventListener('scroll', () => {
+    if (scrollHint && !scrollHintHidden && window.scrollY > 50) {
+        scrollHint.classList.add('hidden');
+        scrollHintHidden = true;
+    }
+}, { passive: true });
+
+// Also hide scroll hint when user scrolls past hero section
+if (scrollHint) {
+    gsap.to(scrollHint, {
+        opacity: 0,
+        scrollTrigger: {
+            trigger: "#hero",
+            start: "bottom top",
+            end: "bottom top",
+            scrub: false,
+            onEnter: () => {
+                if (scrollHint) {
+                    scrollHint.classList.add('hidden');
+                    scrollHintHidden = true;
+                }
+            }
+        }
+    });
+}
+
